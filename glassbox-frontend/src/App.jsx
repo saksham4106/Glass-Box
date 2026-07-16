@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { loadTrace } from './services/traceService.js';
 import { buildSteps } from './lib/traceProcessor.js';
 import CallStack from './components/CallStack.jsx';
+import { Group, Panel, Separator } from 'react-resizable-panels';
 import LocalsTable from './components/LocalsTable.jsx';
 import CollectionsPanel from './components/CollectionsPanel.jsx';
 import ConsoleOutput from './components/ConsoleOutput.jsx';
@@ -65,37 +66,80 @@ export default function App() {
         onNext={() => setStepIndex((i) => Math.min(i + 1, steps.length - 1))}
       />
 
+
       <main className="layout">
-        <div className="area-code">
-          <CodePanel
-              line={activeFrame?.currentLine || []}
-          />
-        </div>
+        <Group orientation="horizontal" style={{ width: '100%', height: '100%' }}>
 
-        <div className="area-main">
-          {/* Stand-in for the checkbox-driven multi-variable view. */}
-          <CollectionsPanel frame={activeFrame} changed={changed} />
-        </div>
+          {/* COLUMN 1: CODE & SCALARS */}
+          <Panel defaultSize="35%" minSize="25%">
+            <Group orientation="vertical">
+              {/* Code Panel */}
+              <Panel defaultSize="60%" minSize="30%">
+                <div className="area-code">
+                  <CodePanel line={activeFrame?.currentLine || []} />
+                </div>
+              </Panel>
 
-        <div className="area-stack">
-          <CallStack
-            frames={frames}
-            selectedFrameId={selectedFrameId}
-            activeFrameId={topFrame?.id ?? null}
-            onSelect={setSelectedFrameId}
-          />
-        </div>
+              <Separator className="resize-handle-vertical" />
 
-        <div className="area-locals">
-          <LocalsTable frame={activeFrame} changed={changed} />
-        </div>
+              {/* Globals & Locals Row */}
+              <Panel defaultSize="40%" minSize="20%">
+                <Group orientation="horizontal">
+                  <Panel defaultSize="50%">
+                    <div className="area-globals scrollable-y">
+                      <GlobalsPanel />
+                    </div>
+                  </Panel>
+                  <Separator className="resize-handle-horizontal" />
+                  <Panel defaultSize="50%">
+                    <div className="area-locals scrollable-y">
+                      <LocalsTable frame={activeFrame} changed={changed} />
+                    </div>
+                  </Panel>
+                </Group>
+              </Panel>
+            </Group>
+          </Panel>
 
-        <div className="area-globals">
-          <GlobalsPanel />
-        </div>
+          <Separator className="resize-handle-horizontal" />
+
+          {/* COLUMN 2: OBJECT/TREE VISUALIZER STAGE */}
+          <Panel defaultSize="45%" minSize="30%">
+            <div className="area-main scrollable-y">
+              <CollectionsPanel frame={activeFrame} changed={changed} />
+            </div>
+          </Panel>
+
+          <Separator className="resize-handle-horizontal" />
+
+          {/* COLUMN 3: STACK & CONSOLE */}
+          <Panel defaultSize="20%" minSize="15%">
+            <Group orientation="vertical">
+              {/* Call Stack */}
+              <Panel defaultSize="70%" minSize="30%">
+                <div className="area-stack scrollable-y">
+                  <CallStack
+                      frames={frames}
+                      selectedFrameId={selectedFrameId}
+                      activeFrameId={topFrame?.id ?? null}
+                      onSelect={setSelectedFrameId}
+                  />
+                </div>
+              </Panel>
+
+              <Separator className="resize-handle-vertical" />
+
+              {/* Console Output sits directly below Call Stack */}
+              <Panel defaultSize="30%" minSize="15%">
+                <div className="area-console">
+                  <ConsoleOutput lines={output} />
+                </div>
+              </Panel>
+            </Group>
+          </Panel>
+
+        </Group>
       </main>
-
-      <ConsoleOutput lines={output} />
     </div>
   );
 }

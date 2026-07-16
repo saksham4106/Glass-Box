@@ -185,7 +185,8 @@ body {
  * change. Each panel just declares which named area it belongs to via
  * `grid-area` further down.
  */
-/*.layout {*/
+/*
+ {*/
 /*  display: grid;*/
 /*  grid-template-areas:*/
 /*    'code   code   main    stack'*/
@@ -201,48 +202,81 @@ body {
 /*}*/
 
 .layout {
-  display: grid;
-  /* 2-Row layout mapping matches your original layout exactly */
-  grid-template-areas:
-    'code      code      main   stack'
-    'globals   locals    main   stack';
-  grid-template-columns: 260px 260px 1fr 220px;
-
-  /* CHANGE THIS: Lock rows to strict viewport ratios (e.g., Code gets 58%, Globals/Locals get 42%) */
-  grid-template-rows: 1.18fr 0.82fr;
-
-  gap: 16px;
-  padding: 8px 28px;
+  display: flex;
   flex: 1;
-  min-height: 0; /* Crucial: allows grid items to shrink below content size */
+  min-height: 0;               /* Allows nested panels to shrink and scroll */
+  height: calc(100vh - 165px); /* Fills screen minus header/controls */
+  padding: 8px 28px 20px;
   overflow: hidden;
 }
 
-/* --- Add this block to index.css --- */
-.area-code,
+/* Inner wrappers for each resizable grid cell */
 .area-main,
 .area-stack,
 .area-locals,
-.area-globals {
+.area-globals,
+.area-console {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 0;       /* Permits child containers to shrink and scroll */
-  height: 100%;
-  overflow: hidden;    /* Prevents container leakage */
+  min-height: 0;
+  overflow: hidden;
 }
 
-/* Make standard panels flex containers that don't overflow */
+.area-code {
+  grid-area: code;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Crucial: allows the cell to shrink below its content height */
+  height: 100%;  /* Fills the allocated grid row height */
+}
+
+/* Helper class for panels containing tall scrollable contents */
+.scrollable-y {
+  overflow-y: auto;
+}
+
+/* Draggable partition dividers (Separator) */
+.resize-handle-horizontal {
+  width: 6px;
+  background-color: transparent;
+  cursor: col-resize;
+  transition: background-color 0.2s ease;
+  margin: 0 4px;
+  border-radius: 3px;
+}
+
+.resize-handle-horizontal:hover,
+.resize-handle-horizontal:active {
+  background-color: var(--accent-amber);
+}
+
+.resize-handle-vertical {
+  height: 6px;
+  background-color: transparent;
+  cursor: row-resize;
+  transition: background-color 0.2s ease;
+  margin: 4px 0;
+  border-radius: 3px;
+}
+
+.resize-handle-vertical:hover,
+.resize-handle-vertical:active {
+  background-color: var(--accent-amber);
+}
+
+/* Panel standard container adjustments */
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 16px;
-
-  /* ADD THESE: */
   display: flex;
   flex-direction: column;
-  min-height: 0;
   height: 100%;
+  width: 100%;
+  min-height: 0;
 }
 
 /* --- Locate .stack-list (around line 208) and add overflow --- */
@@ -255,37 +289,37 @@ body {
   flex: 1;
 }
 
-/* --- Add wrapper rules for scrollable tables --- */
-.area-locals {
-  overflow-y: auto;
-}
+/*!* --- Add wrapper rules for scrollable tables --- *!*/
+/*.area-locals {*/
+/*  overflow-y: auto;*/
+/*}*/
 
-.area-globals {
-  overflow-y: auto;
-}
+/*.area-globals {*/
+/*  overflow-y: auto;*/
+/*}*/
 
-/* --- Make the Object Visualization area scrollable as well --- */
-.area-main {
-  overflow-y: auto;
-}
+/*!* --- Make the Object Visualization area scrollable as well --- *!*/
+/*.area-main {*/
+/*  overflow-y: auto;*/
+/*}*/
 
 
 
-.area-code {
-  grid-area: code;
-}
-.area-main {
-  grid-area: main;
-}
-.area-stack {
-  grid-area: stack;
-}
-.area-locals {
-  grid-area: locals;
-}
-.area-globals {
-  grid-area: globals;
-}
+/*.area-code {*/
+/*  grid-area: code;*/
+/*}*/
+/*.area-main {*/
+/*  grid-area: main;*/
+/*}*/
+/*.area-stack {*/
+/*  grid-area: stack;*/
+/*}*/
+/*.area-locals {*/
+/*  grid-area: locals;*/
+/*}*/
+/*.area-globals {*/
+/*  grid-area: globals;*/
+/*}*/
 
 /* Narrow screens: collapse to a single column, stacked in reading order. */
 @media (max-width: 900px) {
@@ -489,15 +523,12 @@ body {
    Console
    ------------------------------------------------------------------------ */
 .console-panel {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  width: 260px;
-  max-height: 120px;
-  margin: 0;
-  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
-
 
 .console-lines {
   font-family: var(--font-mono);
@@ -506,12 +537,11 @@ body {
   background: #0f1710;
   border-radius: 8px;
   padding: 10px 12px;
-  max-height: 140px;
-  overflow: auto;
+  flex: 1;                /* Fill the panel container cleanly */
+  overflow-y: auto;       /* Internal scrolling only */
   margin: 0;
   white-space: pre-wrap;
 }
-
 /* ------------------------------------------------------------------------
    Motion preference
    ------------------------------------------------------------------------ */
@@ -523,28 +553,36 @@ body {
 }
 
 
-/*!* Target the internal CodeMirror container directly *!*/
-/*.custom-code-editor .cm-editor {*/
-/*  max-height: 500px !important; !* Forces the outer editor limit *!*/
-/*}*/
+/* ------------------------------------------------------------------------
+   CodeMirror Flex-Lock Styles
+   ------------------------------------------------------------------------ */
 
-/*!* Force the internal scroll element to handle overflows *!*/
-/*.custom-code-editor .cm-scroller {*/
-/*  overflow-y: auto !important;*/
-/*  overflow-x: auto !important;*/
-/*}*/
+/* Force the panel container inside .area-code to stretch to full height */
+.area-code > .panel,
+.area-code > .custom-code-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
 
+/* Target the internal CodeMirror container directly */
 .custom-code-editor .cm-editor {
-  /* CHANGE THIS: */
-  height: 100% !important;      /* Fit parent grid height */
-  max-height: 100% !important;  /* Do not expand past it */
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  height: 100% !important; /* Replaced the restrictive max-height: 500px */
 }
 
+/* Force the internal scroll element to handle overflows and fill space */
 .custom-code-editor .cm-scroller {
-  overflow-y: auto !important;
-  overflow-x: auto !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow-y: auto !important; /* Enables vertical scrolling inside the panel */
+  overflow-x: auto !important; /* Enables horizontal scrolling */
 }
-
 /* Active Line - Brighter accent (e.g., Bright Yellow) */
 .highlighted-line-active {
   background-color: rgba(234, 179, 8, 0.2) !important;
