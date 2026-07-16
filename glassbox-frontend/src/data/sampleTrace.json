@@ -1,0 +1,950 @@
+{
+  "events" : [ {
+    "type" : "push_frame",
+    "frame" : "main_0",
+    "parent" : null,
+    "args" : {
+      "args" : {
+        "elements" : [ ],
+        "jvmType" : "java.lang.String[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "<init>_1",
+    "parent" : "main_0",
+    "args" : { }
+  }, {
+    "type" : "local",
+    "line" : 1,
+    "frameId" : "<init>_1",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "<init>_1",
+    "line" : 2,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 3,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 4,
+    "frameId" : "main_0",
+    "varState" : {
+      "visualizer" : {
+        "data" : "instance of QuickSortVisualizer(id=57)",
+        "jvmType" : "QuickSortVisualizer",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 6,
+    "frameId" : "main_0",
+    "varState" : {
+      "input" : {
+        "elements" : [ "4", "2", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "sort_2",
+    "parent" : "main_0",
+    "args" : {
+      "arr" : {
+        "elements" : [ "4", "2", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "sort_2",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_3",
+    "parent" : "sort_2",
+    "args" : {
+      "arr" : {
+        "elements" : [ "4", "2", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_3",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 16,
+    "frameId" : "quickSort_3",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "partition_4",
+    "parent" : "quickSort_3",
+    "args" : {
+      "arr" : {
+        "elements" : [ "4", "2", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 22,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 23,
+    "frameId" : "partition_4",
+    "varState" : {
+      "pivot" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_4",
+    "varState" : {
+      "i" : {
+        "data" : "-1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 26,
+    "frameId" : "partition_4",
+    "varState" : {
+      "j" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 26,
+    "frameId" : "partition_4",
+    "varState" : {
+      "j" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 27,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 28,
+    "frameId" : "partition_4",
+    "varState" : {
+      "i" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 29,
+    "frameId" : "partition_4",
+    "varState" : {
+      "temp" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 30,
+    "frameId" : "partition_4",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "2", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_4",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "4", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 26,
+    "frameId" : "partition_4",
+    "varState" : {
+      "j" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 26,
+    "frameId" : "partition_4",
+    "varState" : {
+      "j" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 27,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 28,
+    "frameId" : "partition_4",
+    "varState" : {
+      "i" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 29,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 30,
+    "frameId" : "partition_4",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "1", "7", "1", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_4",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "1", "7", "4", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "partition_4",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 34,
+    "frameId" : "partition_4",
+    "varState" : {
+      "temp" : {
+        "data" : "7",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 35,
+    "frameId" : "partition_4",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "1", "3", "4", "3" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 37,
+    "frameId" : "partition_4",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "1", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "partition_4",
+    "line" : 5,
+    "return" : {
+      "data" : "2",
+      "jvmType" : "int",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 16,
+    "frameId" : "quickSort_3",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "2", "1", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 17,
+    "frameId" : "quickSort_3",
+    "varState" : {
+      "pivotIndex" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_5",
+    "parent" : "quickSort_3",
+    "args" : {
+      "arr" : {
+        "elements" : [ "2", "1", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_5",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 16,
+    "frameId" : "quickSort_5",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "partition_6",
+    "parent" : "quickSort_5",
+    "args" : {
+      "arr" : {
+        "elements" : [ "2", "1", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 22,
+    "frameId" : "partition_6",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 23,
+    "frameId" : "partition_6",
+    "varState" : {
+      "pivot" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_6",
+    "varState" : {
+      "i" : {
+        "data" : "-1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 26,
+    "frameId" : "partition_6",
+    "varState" : {
+      "j" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_6",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "partition_6",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 34,
+    "frameId" : "partition_6",
+    "varState" : {
+      "temp" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 35,
+    "frameId" : "partition_6",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "1", "1", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 37,
+    "frameId" : "partition_6",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "partition_6",
+    "line" : 5,
+    "return" : {
+      "data" : "0",
+      "jvmType" : "int",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 16,
+    "frameId" : "quickSort_5",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 17,
+    "frameId" : "quickSort_5",
+    "varState" : {
+      "pivotIndex" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_7",
+    "parent" : "quickSort_5",
+    "args" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "-1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_7",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_7",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 18,
+    "frameId" : "quickSort_5",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_8",
+    "parent" : "quickSort_5",
+    "args" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_8",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_8",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 19,
+    "frameId" : "quickSort_5",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_5",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 18,
+    "frameId" : "quickSort_3",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_9",
+    "parent" : "quickSort_3",
+    "args" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_9",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 16,
+    "frameId" : "quickSort_9",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "partition_10",
+    "parent" : "quickSort_9",
+    "args" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 22,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 23,
+    "frameId" : "partition_10",
+    "varState" : {
+      "pivot" : {
+        "data" : "7",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_10",
+    "varState" : {
+      "i" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 26,
+    "frameId" : "partition_10",
+    "varState" : {
+      "j" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 27,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 28,
+    "frameId" : "partition_10",
+    "varState" : {
+      "i" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 29,
+    "frameId" : "partition_10",
+    "varState" : {
+      "temp" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 30,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 25,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 34,
+    "frameId" : "partition_10",
+    "varState" : {
+      "temp" : {
+        "data" : "7",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 35,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 37,
+    "frameId" : "partition_10",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "partition_10",
+    "line" : 5,
+    "return" : {
+      "data" : "4",
+      "jvmType" : "int",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 16,
+    "frameId" : "quickSort_9",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 17,
+    "frameId" : "quickSort_9",
+    "varState" : {
+      "pivotIndex" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_11",
+    "parent" : "quickSort_9",
+    "args" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_11",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_11",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 18,
+    "frameId" : "quickSort_9",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "quickSort_12",
+    "parent" : "quickSort_9",
+    "args" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      },
+      "left" : {
+        "data" : "5",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "right" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "quickSort_12",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_12",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 19,
+    "frameId" : "quickSort_9",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_9",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "quickSort_3",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "sort_2",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "sort_2",
+    "line" : 5,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  }, {
+    "type" : "local",
+    "line" : 7,
+    "frameId" : "main_0",
+    "varState" : {
+      "input" : {
+        "elements" : [ "1", "2", "3", "4", "7" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "main_0",
+    "line" : 6,
+    "return" : {
+      "data" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "PRIMITIVE"
+    }
+  } ]
+}

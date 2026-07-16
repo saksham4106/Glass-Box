@@ -1,0 +1,559 @@
+/* ------------------------------------------------------------------------
+   Design tokens
+   A dark, editor-like palette: ink background, one amber accent for
+   "current / active" (the debugger cursor), one teal accent for object
+   data (to visually separate the heap-ish Objects panel from scalars).
+   ------------------------------------------------------------------------ */
+:root {
+  --bg: #12141c;
+  --panel: #1b1e29;
+  --panel-alt: #20232f;
+  --border: #2a2e3d;
+  --border-soft: #22252f;
+  --text: #e4e6ee;
+  --text-muted: #8a8fa3;
+
+  --accent-amber: #e8a94a;
+  --accent-teal: #4fb8ae;
+  --accent-violet: #8c7ae6;
+
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ------------------------------------------------------------------------
+   Shell
+   ------------------------------------------------------------------------ */
+.app {
+  display: flex;
+  flex-direction: column;
+  /*min-height: 100vh;*/
+
+  height: 100vh;       /* Force exact viewport height */
+  overflow: hidden;    /* Stop overall browser scrollbars from appearing */
+}
+
+.app-header {
+  padding: 20px 28px 4px;
+}
+
+.app-header h1 {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.app-subtitle {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 2px 0 0;
+}
+
+/* ------------------------------------------------------------------------
+   Timeline scrubber
+   ------------------------------------------------------------------------ */
+.timeline {
+  position: relative;
+  height: 24px;
+  margin: 10px 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.tick {
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  height: 14px;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: #3b4055;
+  cursor: pointer;
+  transform: translateX(-50%);
+}
+
+.tick:hover {
+  filter: brightness(1.3);
+}
+
+.tick-push {
+  background: var(--accent-violet);
+}
+.tick-pop {
+  background: var(--accent-amber);
+}
+.tick-sysout {
+  background: var(--accent-teal);
+}
+.tick-start {
+  background: var(--text-muted);
+}
+
+.tick-current {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------------
+   Controls
+   ------------------------------------------------------------------------ */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 28px;
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--accent-amber);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible,
+.tick:focus-visible,
+.frame-card:focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 2px;
+}
+
+.controls-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.step-count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.step-label {
+  font-size: 0.95rem;
+}
+
+/* ------------------------------------------------------------------------
+   Layout
+   ------------------------------------------------------------------------ */
+/*
+ * The floor plan. Read this literally as a picture of the screen: each
+ * quoted row is a row of cells, each word is which named area occupies
+ * that cell. A name repeated across rows/columns means that area spans
+ * that space (e.g. "code" filling rows 1-2, "stack" filling all 4 rows).
+ *
+ * To rearrange the layout, edit ONLY this string (plus column/row sizes
+ * below it if needed) - nothing in App.jsx or any panel component needs to
+ * change. Each panel just declares which named area it belongs to via
+ * `grid-area` further down.
+ */
+/*.layout {*/
+/*  display: grid;*/
+/*  grid-template-areas:*/
+/*    'code   code   main    stack'*/
+/*    'code   code   main    stack'*/
+/*    'globals   locals   main   stack'*/
+/*    'globals   locals   main   stack';*/
+/*  grid-template-columns: 260px 260px 1fr 220px;*/
+/*  grid-template-rows: 1fr 1fr auto auto;*/
+/*  gap: 16px;*/
+/*  padding: 8px 28px;*/
+/*  flex: 1;*/
+/*  min-height: 0;*/
+/*}*/
+
+.layout {
+  display: grid;
+  /* 2-Row layout mapping matches your original layout exactly */
+  grid-template-areas:
+    'code      code      main   stack'
+    'globals   locals    main   stack';
+  grid-template-columns: 260px 260px 1fr 220px;
+
+  /* CHANGE THIS: Lock rows to strict viewport ratios (e.g., Code gets 58%, Globals/Locals get 42%) */
+  grid-template-rows: 1.18fr 0.82fr;
+
+  gap: 16px;
+  padding: 8px 28px;
+  flex: 1;
+  min-height: 0; /* Crucial: allows grid items to shrink below content size */
+  overflow: hidden;
+}
+
+/* --- Add this block to index.css --- */
+.area-code,
+.area-main,
+.area-stack,
+.area-locals,
+.area-globals {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;       /* Permits child containers to shrink and scroll */
+  height: 100%;
+  overflow: hidden;    /* Prevents container leakage */
+}
+
+/* Make standard panels flex containers that don't overflow */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+
+  /* ADD THESE: */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+/* --- Locate .stack-list (around line 208) and add overflow --- */
+.stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* ADD THESE: */
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* --- Add wrapper rules for scrollable tables --- */
+.area-locals {
+  overflow-y: auto;
+}
+
+.area-globals {
+  overflow-y: auto;
+}
+
+/* --- Make the Object Visualization area scrollable as well --- */
+.area-main {
+  overflow-y: auto;
+}
+
+
+
+.area-code {
+  grid-area: code;
+}
+.area-main {
+  grid-area: main;
+}
+.area-stack {
+  grid-area: stack;
+}
+.area-locals {
+  grid-area: locals;
+}
+.area-globals {
+  grid-area: globals;
+}
+
+/* Narrow screens: collapse to a single column, stacked in reading order. */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-areas:
+      'code'
+      'main'
+      'stack'
+      'locals'
+      'globals';
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.panel-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+
+.empty-hint {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------------
+   Call stack
+   ------------------------------------------------------------------------ */
+.stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.frame-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.frame-card.frame-active {
+  border-color: var(--accent-amber);
+}
+
+.frame-card.frame-selected {
+  box-shadow: 0 0 0 1px var(--accent-amber) inset;
+}
+
+.frame-line {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+/* ------------------------------------------------------------------------
+   Locals table
+   ------------------------------------------------------------------------ */
+.locals-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.locals-table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.locals-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.cell-type {
+  color: var(--text-muted);
+}
+
+.row-changed {
+  animation: flash-row 900ms ease-out;
+}
+
+@keyframes flash-row {
+  from {
+    background: rgba(232, 169, 74, 0.35);
+  }
+  to {
+    background: transparent;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Collections / objects
+   ------------------------------------------------------------------------ */
+.collection-block {
+  margin-bottom: 14px;
+}
+
+.collection-block:last-child {
+  margin-bottom: 0;
+}
+
+.collection-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.collection-row {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.collection-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cell-value {
+  min-width: 32px;
+  background: #1e2a2a;
+  border: 1px solid var(--accent-teal);
+  border-radius: 4px 4px 0 0;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 6px 4px;
+}
+
+.cell-index {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.collection-empty {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.block-changed .cell-value {
+  animation: flash-cell 900ms ease-out;
+}
+
+@keyframes flash-cell {
+  from {
+    box-shadow: 0 0 0 2px var(--accent-amber);
+  }
+  to {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.unknown-raw {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: var(--panel-alt);
+  border-radius: 6px;
+  padding: 8px;
+  margin: 0;
+  overflow-x: auto;
+}
+
+/* ------------------------------------------------------------------------
+   Console
+   ------------------------------------------------------------------------ */
+.console-panel {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 260px;
+  max-height: 120px;
+  margin: 0;
+  z-index: 10;
+}
+
+
+.console-lines {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #b7f4c8;
+  background: #0f1710;
+  border-radius: 8px;
+  padding: 10px 12px;
+  max-height: 140px;
+  overflow: auto;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ------------------------------------------------------------------------
+   Motion preference
+   ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .row-changed,
+  .block-changed .cell-value {
+    animation: none;
+  }
+}
+
+
+/*!* Target the internal CodeMirror container directly *!*/
+/*.custom-code-editor .cm-editor {*/
+/*  max-height: 500px !important; !* Forces the outer editor limit *!*/
+/*}*/
+
+/*!* Force the internal scroll element to handle overflows *!*/
+/*.custom-code-editor .cm-scroller {*/
+/*  overflow-y: auto !important;*/
+/*  overflow-x: auto !important;*/
+/*}*/
+
+.custom-code-editor .cm-editor {
+  /* CHANGE THIS: */
+  height: 100% !important;      /* Fit parent grid height */
+  max-height: 100% !important;  /* Do not expand past it */
+}
+
+.custom-code-editor .cm-scroller {
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+}
+
+/* Active Line - Brighter accent (e.g., Bright Yellow) */
+.highlighted-line-active {
+  background-color: rgba(234, 179, 8, 0.2) !important;
+  border-left: 3px solid #eab308;
+}
+
+/* Last Line - Subtle "ghost" accent (e.g., Transparent Blue/Gray) */
+.highlighted-line-last {
+  background-color: rgba(56, 189, 248, 0.1) !important;
+  border-left: 3px solid #38bdf8;
+  opacity: 0.8; /* Slightly fade the last line */
+}
