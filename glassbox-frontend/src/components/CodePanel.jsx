@@ -4,6 +4,8 @@ import {java} from '@codemirror/lang-java'
 import { oneDark } from '@codemirror/theme-one-dark';
 import { StateField, StateEffect } from '@codemirror/state';
 import { EditorView, Decoration } from '@codemirror/view';
+import Timeline from "./Timeline.jsx";
+import Controls from "./Controls.jsx";
 
 // 1. UPDATED HIGHLIGHTER GENERATOR (Accepts both lines)
 const createDualLineHighlighter = (activeLineNum, lastLineNum) => {
@@ -49,10 +51,8 @@ const createDualLineHighlighter = (activeLineNum, lastLineNum) => {
     });
 };
 
-export default function CodeInput({line}) {
-    const [code, setCode] = useState(
-        `function calculateSum(a, b) {\n  // Line 2: This line is highlighted!\n  const sum = a + b;\n  return sum; // Line 4: This is also highlighted!\n}`
-    );
+export default function CodeInput({line, code, setCode, setStepIndex, stepIndex, steps, label, goPrev, goNext}) {
+
     const [lastLine, setLastLine] = useState(null);
     const currentLineRef = useRef(line);
 
@@ -71,24 +71,25 @@ export default function CodeInput({line}) {
     );
 
     return (
-        <div style={{ width: '100%', maxWidth: '700px' }}>
-            <div style={{ border: '1px solid #333', borderRadius: '6px', overflow: 'hidden' }}>
-                <CodeMirror
-                    value={code}
-                    theme={oneDark}
-                    // Pass the dynamic line highlighter into the extensions array alongside JS support
-                    extensions={[java(), highlightExtension]}
-                    onChange={(value) => setCode(value)}
-                    style={{ fontSize: '14px' }}
-                    className="custom-code-editor"
-                    themeProps={{
-                        style: {
-                            maxHeight: '500px',
-                            overflow: 'auto',
-                        }
-                    }}
-                />
-            </div>
+        <div className="custom-code-editor-wrapper" style={{  border: '1px solid #333', borderRadius: '6px', overflow:'hidden'}}>
+            <CodeMirror
+                value={code}
+                theme={oneDark}
+                extensions={[java(), highlightExtension]}
+                onChange={(value) => setCode(value)}
+                style={{ fontSize: '14px', height: '100%' }} // Ensure the editor tries to fill height
+                className="custom-code-editor"
+            />
+
+            <Timeline steps={steps} stepIndex={stepIndex} onJump={setStepIndex} />
+
+            <Controls
+                stepIndex={stepIndex}
+                totalSteps={steps.length}
+                label={label}
+                onPrev={goPrev}
+                onNext={goNext}
+            />
         </div>
     );
 }

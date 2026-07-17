@@ -10,7 +10,6 @@
 export default function GlobalsPanel() {
   return (
     <div className="panel globals-panel">
-      <h2 className="panel-title">Globals</h2>
       <p className="empty-hint">Not wired up yet.</p>
     </div>
   );

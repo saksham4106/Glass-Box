@@ -50,7 +50,7 @@ function applyEvent({ frames, output }, event) {
       const newFrame = {
         id: event.frame,
         parent: event.parent,
-        currentLine: null,
+        currentLine: event.line,
         vars,
       };
       return {

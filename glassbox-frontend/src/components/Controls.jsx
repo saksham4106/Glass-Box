@@ -6,9 +6,6 @@ export default function Controls({ stepIndex, totalSteps, label, onPrev, onNext 
         &larr; Back
       </button>
       <div className="controls-status">
-        <span className="step-count">
-          Step {stepIndex} / {totalSteps - 1}
-        </span>
         <span className="step-label">{label}</span>
       </div>
       <button className="btn" onClick={onNext} disabled={stepIndex === totalSteps - 1}>

@@ -48,8 +48,6 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  /*min-height: 100vh;*/
-
   height: 100vh;       /* Force exact viewport height */
   overflow: hidden;    /* Stop overall browser scrollbars from appearing */
 }
@@ -74,12 +72,12 @@ body {
 /* ------------------------------------------------------------------------
    Timeline scrubber
    ------------------------------------------------------------------------ */
-.timeline {
-  position: relative;
-  height: 24px;
-  margin: 10px 28px 0;
-  border-bottom: 1px solid var(--border);
-}
+/*.timeline {*/
+/*  position: relative;*/
+/*  height: 24px;*/
+/*  margin: 10px 28px 0;*/
+/*  border-bottom: 1px solid var(--border);*/
+/*}*/
 
 .tick {
   position: absolute;
@@ -123,18 +121,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px 28px;
+  gap: 12px;
+  padding: 5px 16px;
 }
 
 .btn {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.65rem;
   background: var(--panel);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px 14px;
+  border-radius: 4px;
+  padding: 4px 10px;
   cursor: pointer;
 }
 
@@ -163,44 +161,17 @@ body {
 
 .step-count {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.65rem;
   color: var(--text-muted);
 }
 
 .step-label {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 
 /* ------------------------------------------------------------------------
-   Layout
+   Flexible Resizing Layout
    ------------------------------------------------------------------------ */
-/*
- * The floor plan. Read this literally as a picture of the screen: each
- * quoted row is a row of cells, each word is which named area occupies
- * that cell. A name repeated across rows/columns means that area spans
- * that space (e.g. "code" filling rows 1-2, "stack" filling all 4 rows).
- *
- * To rearrange the layout, edit ONLY this string (plus column/row sizes
- * below it if needed) - nothing in App.jsx or any panel component needs to
- * change. Each panel just declares which named area it belongs to via
- * `grid-area` further down.
- */
-/*
- {*/
-/*  display: grid;*/
-/*  grid-template-areas:*/
-/*    'code   code   main    stack'*/
-/*    'code   code   main    stack'*/
-/*    'globals   locals   main   stack'*/
-/*    'globals   locals   main   stack';*/
-/*  grid-template-columns: 260px 260px 1fr 220px;*/
-/*  grid-template-rows: 1fr 1fr auto auto;*/
-/*  gap: 16px;*/
-/*  padding: 8px 28px;*/
-/*  flex: 1;*/
-/*  min-height: 0;*/
-/*}*/
-
 .layout {
   display: flex;
   flex: 1;
@@ -210,26 +181,19 @@ body {
   overflow: hidden;
 }
 
-/* Inner wrappers for each resizable grid cell */
+
 .area-main,
 .area-stack,
 .area-locals,
 .area-globals,
-.area-console {
+.area-console,
+.area-code {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
-}
-
-.area-code {
-  grid-area: code;
-  display: flex;
-  flex-direction: column;
-  min-height: 0; /* Crucial: allows the cell to shrink below its content height */
-  height: 100%;  /* Fills the allocated grid row height */
+  min-width: 0;
 }
 
 /* Helper class for panels containing tall scrollable contents */
@@ -266,8 +230,10 @@ body {
   background-color: var(--accent-amber);
 }
 
-/* Panel standard container adjustments */
-.panel {
+/* ------------------------------------------------------------------------
+   Drag-and-Drop Drag Overlay Style Enhancements
+   ------------------------------------------------------------------------ */
+.swappable-panel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -277,69 +243,58 @@ body {
   height: 100%;
   width: 100%;
   min-height: 0;
+  min-width: 0;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* --- Locate .stack-list (around line 208) and add overflow --- */
-.stack-list {
+.panel-header-drag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 10px;
+  cursor: grab;
+  user-select: none;
+}
+
+.panel-header-drag:active {
+  cursor: grabbing;
+}
+
+.drag-handle {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: -1px;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.panel-header-drag:hover .drag-handle {
+  opacity: 1;
+  color: var(--accent-amber);
+}
+
+.panel-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  /* ADD THESE: */
-  overflow-y: auto;
-  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
 }
 
-/*!* --- Add wrapper rules for scrollable tables --- *!*/
-/*.area-locals {*/
-/*  overflow-y: auto;*/
-/*}*/
-
-/*.area-globals {*/
-/*  overflow-y: auto;*/
-/*}*/
-
-/*!* --- Make the Object Visualization area scrollable as well --- *!*/
-/*.area-main {*/
-/*  overflow-y: auto;*/
-/*}*/
-
-
-
-/*.area-code {*/
-/*  grid-area: code;*/
-/*}*/
-/*.area-main {*/
-/*  grid-area: main;*/
-/*}*/
-/*.area-stack {*/
-/*  grid-area: stack;*/
-/*}*/
-/*.area-locals {*/
-/*  grid-area: locals;*/
-/*}*/
-/*.area-globals {*/
-/*  grid-area: globals;*/
-/*}*/
-
-/* Narrow screens: collapse to a single column, stacked in reading order. */
-@media (max-width: 900px) {
-  .layout {
-    grid-template-areas:
-      'code'
-      'main'
-      'stack'
-      'locals'
-      'globals';
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-  }
+/* States during active drags */
+.swappable-panel.is-dragging {
+  opacity: 0.45;
+  border-style: dashed;
 }
 
-.panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
+.swappable-panel.drag-over {
+  border-color: var(--accent-amber);
+  background: rgba(232, 169, 74, 0.04);
+  box-shadow: 0 0 12px rgba(232, 169, 74, 0.12);
 }
 
 .panel-title {
@@ -348,7 +303,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 .empty-hint {
@@ -365,6 +320,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .frame-card {
@@ -438,7 +395,6 @@ body {
     background: transparent;
   }
 }
-
 /* ------------------------------------------------------------------------
    Collections / objects
    ------------------------------------------------------------------------ */
@@ -461,62 +417,156 @@ body {
 
 .collection-row {
   display: flex;
-  gap: 2px;
+  gap: 3px;
   flex-wrap: wrap;
+  padding: 2px 0;
 }
 
 .collection-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 36px;
+  position: relative;
+  padding: 2px 2px 4px 2px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+/* Cell with one or more pointers */
+.collection-cell.has-pointer {
+  border-color: rgba(74, 158, 255, 0.25);
+  background: rgba(74, 158, 255, 0.05);
+  border-radius: 4px;
 }
 
 .cell-value {
   min-width: 32px;
   background: #1e2a2a;
   border: 1px solid var(--accent-teal);
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   text-align: center;
   padding: 6px 4px;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.collection-cell.has-pointer .cell-value {
+  border-color: var(--accent-color, #4a9eff);
+  border-width: 2px;
+  background: rgba(74, 158, 255, 0.08);
 }
 
 .cell-index {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   color: var(--text-muted);
   margin-top: 2px;
+  min-height: 14px;
+  font-family: var(--font-mono, monospace);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+/* Container for pointer names - FIXED class name */
+.pointer-names {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Individual pointer name - FIXED class name */
+.pointer-name {
+  font-size: 0.45rem;
+  font-weight: 600;
+  padding: 0 4px;
+  border-radius: 2px;
+  line-height: 1.4;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.3px;
+  text-transform: lowercase;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+/* horizontal */
+/*.pointer-names {*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  gap: 2px;*/
+/*  flex-wrap: wrap;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  width: 100%;*/
+/*}*/
+
+/*.pointer-name {*/
+/*  font-size: 0.45rem;*/
+/*  font-weight: 600;*/
+/*  padding: 0 4px;*/
+/*  border-radius: 2px;*/
+/*  line-height: 1.4;*/
+/*  font-family: var(--font-mono, monospace);*/
+/*  letter-spacing: 0.3px;*/
+/*  text-transform: lowercase;*/
+/*  white-space: nowrap;*/
+/*  border: 1px solid transparent;*/
+/*}*/
+
+/* Different colors for multiple pointers - FIXED selectors */
+.collection-cell.has-pointer .pointer-name:nth-child(1) {
+  color: #4a9eff;
+  background: rgba(74, 158, 255, 0.15);
+  border-color: rgba(74, 158, 255, 0.2);
+}
+
+.collection-cell.has-pointer .pointer-name:nth-child(2) {
+  color: #f0a030;
+  background: rgba(240, 160, 48, 0.15);
+  border-color: rgba(240, 160, 48, 0.2);
+}
+
+.collection-cell.has-pointer .pointer-name:nth-child(3) {
+  color: #6fcf97;
+  background: rgba(111, 207, 151, 0.15);
+  border-color: rgba(111, 207, 151, 0.2);
+}
+
+.collection-cell.has-pointer .pointer-name:nth-child(4) {
+  color: #bb6bd9;
+  background: rgba(187, 107, 217, 0.15);
+  border-color: rgba(187, 107, 217, 0.2);
+}
+
+.collection-cell.has-pointer .pointer-name:nth-child(5) {
+  color: #f2994a;
+  background: rgba(242, 153, 74, 0.15);
+  border-color: rgba(242, 153, 74, 0.2);
+}
+
+/* Hover effect */
+.collection-cell.has-pointer .pointer-name:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .collection-empty {
   color: var(--text-muted);
   font-size: 0.78rem;
   font-style: italic;
-}
-
-.block-changed .cell-value {
-  animation: flash-cell 900ms ease-out;
-}
-
-@keyframes flash-cell {
-  from {
-    box-shadow: 0 0 0 2px var(--accent-amber);
-  }
-  to {
-    box-shadow: 0 0 0 0 transparent;
-  }
-}
-
-.unknown-raw {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  background: var(--panel-alt);
-  border-radius: 6px;
-  padding: 8px;
-  margin: 0;
-  overflow-x: auto;
+  padding: 8px 0;
 }
 
 /* ------------------------------------------------------------------------
@@ -528,6 +578,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  min-width: 0;
 }
 
 .console-lines {
@@ -542,6 +593,7 @@ body {
   margin: 0;
   white-space: pre-wrap;
 }
+
 /* ------------------------------------------------------------------------
    Motion preference
    ------------------------------------------------------------------------ */
@@ -553,37 +605,45 @@ body {
 }
 
 
-/* ------------------------------------------------------------------------
-   CodeMirror Flex-Lock Styles
-   ------------------------------------------------------------------------ */
-
-/* Force the panel container inside .area-code to stretch to full height */
-.area-code > .panel,
-.area-code > .custom-code-editor {
-  flex: 1;
+/* 1. Remove the restrictive wrapper styles */
+.custom-code-editor-wrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  height: 100%;
+
 }
 
-/* Target the internal CodeMirror container directly */
+/* 2. Force CodeMirror container to fill its parent */
+.custom-code-editor {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important
+}
+
+/* 3. The magic: Force the internal scroller to handle everything */
 .custom-code-editor .cm-editor {
-  flex: 1 !important;
+  height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   min-height: 0 !important;
-  height: 100% !important; /* Replaced the restrictive max-height: 500px */
 }
 
-/* Force the internal scroll element to handle overflows and fill space */
+/* 4. Force the bar and define the scroll engine */
 .custom-code-editor .cm-scroller {
   flex: 1 !important;
   min-height: 0 !important;
-  overflow-y: auto !important; /* Enables vertical scrolling inside the panel */
-  overflow-x: auto !important; /* Enables horizontal scrolling */
+
+  /* Force the scrollbar to be visible and allow internal scrolling */
+  overflow-y: scroll !important;
+  overflow-x: auto !important;
+
+  /* Ensure it fills its container */
+  position: relative !important;
+  height: 100% !important;
 }
-/* Active Line - Brighter accent (e.g., Bright Yellow) */
+
 .highlighted-line-active {
   background-color: rgba(234, 179, 8, 0.2) !important;
   border-left: 3px solid #eab308;
@@ -594,4 +654,112 @@ body {
   background-color: rgba(56, 189, 248, 0.1) !important;
   border-left: 3px solid #38bdf8;
   opacity: 0.8; /* Slightly fade the last line */
+}
+
+/* ------------------------------------------------------------------------
+   Custom Scrollbar Styles (Match the Theme)
+   ------------------------------------------------------------------------ */
+
+/* 1. Chrome, Edge, Safari */
+.cm-scroller::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.cm-scroller::-webkit-scrollbar-track {
+  background: var(--bg); /* Matches your dark background */
+}
+
+.cm-scroller::-webkit-scrollbar-thumb {
+  background: var(--border); /* Uses your border color */
+  border-radius: 5px;
+  border: 2px solid var(--bg); /* Creates a "floating" pill effect */
+}
+
+.cm-scroller::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-amber); /* Highlights when you hover */
+}
+
+/* 2. Firefox */
+.cm-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg);
+}
+
+
+
+.timeline-ultra-compact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 12px;
+  background: var(--panel, #1e1e1e);
+  border-bottom: 1px solid var(--border-color, #2d2d2d);
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.timeline-slider-compact {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: #3d3d3d;
+  outline: none;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.timeline-slider-compact::-webkit-slider-track {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: #3d3d3d;
+}
+
+.timeline-slider-compact::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: #3d3d3d;
+  border: none;
+}
+
+.timeline-slider-compact::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #4a9eff;
+  cursor: pointer;
+  border: 2px solid var(--panel, #1e1e1e);
+}
+
+.timeline-slider-compact::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #4a9eff;
+  cursor: pointer;
+  border: 2px solid var(--panel-alt, #1e1e1e);
+}
+
+.timeline-step-counter-compact {
+  font-size: 10px;
+  color: var(--text-muted, #6b6b6b);
+  font-variant-numeric: tabular-nums;
+  min-width: 30px;
+  text-align: right;
+}
+
+.timeline-step-label-compact {
+  font-size: 10px;
+  color: var(--text, #8b8b8b);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 40px;
 }

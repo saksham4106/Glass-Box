@@ -11,7 +11,6 @@ export default function CallStack({ frames, selectedFrameId, activeFrameId, onSe
 
   return (
     <div className="panel stack-panel">
-      <h2 className="panel-title">Call stack</h2>
       {stackOrder.length === 0 ? (
         <p className="empty-hint">No active frames.</p>
       ) : (

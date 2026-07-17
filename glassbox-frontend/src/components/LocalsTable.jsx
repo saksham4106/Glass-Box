@@ -9,7 +9,6 @@ export default function LocalsTable({ frame, changed }) {
   if (!frame) {
     return (
       <div className="panel locals-panel">
-        <h2 className="panel-title">Locals</h2>
         <p className="empty-hint">Nothing on the stack yet.</p>
       </div>
     );
@@ -19,7 +18,7 @@ export default function LocalsTable({ frame, changed }) {
 
   return (
     <div className="panel locals-panel">
-      <h2 className="panel-title">Locals — {frame.id}</h2>
+      <center><h2 className="panel-title">{frame.id}</h2></center>
       {rows.length === 0 ? (
         <p className="empty-hint">No primitives in this frame.</p>
       ) : (
