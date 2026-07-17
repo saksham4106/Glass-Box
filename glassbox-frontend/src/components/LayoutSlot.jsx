@@ -32,12 +32,15 @@ const PANEL_CONFIG = {
     stack: {
         title: 'Call Stack',
         areaClass: 'area-stack scrollable-y',
-        render: ({ frames, selectedFrameId, topFrame, setSelectedFrameId }) => (
+        render: ({ frames, selectedFrameId, topFrame, setSelectedFrameId, steps, stepIndex, graphOrStack}) => (
             <CallStack
                 frames={frames}
+                stepIndex={stepIndex}
                 selectedFrameId={selectedFrameId}
                 activeFrameId={topFrame?.id ?? null}
                 onSelect={setSelectedFrameId}
+                steps={steps}
+                graphOrStack={graphOrStack}
             />
         ),
     },
@@ -47,6 +50,7 @@ const PANEL_CONFIG = {
         render: ({ output }) => <ConsoleOutput lines={output} />,
     },
 };
+
 
 export function LayoutSlot({
                                slotId,
@@ -59,6 +63,7 @@ export function LayoutSlot({
                                onDrop,
                                onDragEnd,
                                panelProps,
+                               onDoubleClick
                            }) {
     const config = PANEL_CONFIG[panelType];
     if (!config) return null;
@@ -69,6 +74,7 @@ export function LayoutSlot({
             onDragOver={(e) => onDragOver(e, slotId)}
             onDragLeave={() => onDragLeave(slotId)}
             onDrop={(e) => onDrop(e, slotId)}
+            onDoubleClick={(e) => onDoubleClick(e, slotId)}
         >
             <div className={`panel swappable-panel ${isOver ? 'drag-over' : ''} ${isDragging ? 'is-dragging' : ''}`}>
                 <div

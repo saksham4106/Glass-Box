@@ -16,6 +16,7 @@ import sampleTrace from '../data/sampleTrace.json';
  * The async signature is kept identical on purpose so nothing that calls
  * loadTrace() needs to change when the swap happens.
  */
-export async function loadTrace() {
+export async function loadTrace({code}) {
+  console.log(code);
   return sampleTrace;
 }

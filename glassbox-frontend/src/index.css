@@ -420,6 +420,7 @@ body {
   gap: 3px;
   flex-wrap: wrap;
   padding: 2px 0;
+  align-items: flex-start;
 }
 
 .collection-cell {
@@ -473,7 +474,7 @@ body {
   gap: 1px;
 }
 
-/* Container for pointer names - FIXED class name */
+/* Container for pointer names */
 .pointer-names {
   display: flex;
   flex-direction: column;
@@ -484,7 +485,7 @@ body {
   width: 100%;
 }
 
-/* Individual pointer name - FIXED class name */
+/* Individual pointer name */
 .pointer-name {
   font-size: 0.45rem;
   font-weight: 600;
@@ -500,31 +501,39 @@ body {
   border: 1px solid transparent;
 }
 
-/* horizontal */
-/*.pointer-names {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  gap: 2px;*/
-/*  flex-wrap: wrap;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*  width: 100%;*/
-/*}*/
+/* Out of bounds pointer - small tag like regular pointers */
+.out-of-bounds-pointer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 20px;
+  padding: 2px 2px 4px 2px;
+  transform: translateY(40%);
 
-/*.pointer-name {*/
-/*  font-size: 0.45rem;*/
-/*  font-weight: 600;*/
-/*  padding: 0 4px;*/
-/*  border-radius: 2px;*/
-/*  line-height: 1.4;*/
-/*  font-family: var(--font-mono, monospace);*/
-/*  letter-spacing: 0.3px;*/
-/*  text-transform: lowercase;*/
-/*  white-space: nowrap;*/
-/*  border: 1px solid transparent;*/
-/*}*/
+}
 
-/* Different colors for multiple pointers - FIXED selectors */
+.out-of-bounds-pointer .pointer-name.out-of-bounds {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.15);
+  border-color: rgba(255, 68, 68, 0.3);
+  font-size: 0.45rem;
+  padding: 0 4px;
+  border-radius: 2px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-transform: lowercase;
+  white-space: nowrap;
+  width: auto;
+}
+
+.out-of-bounds-index {
+  font-size: 0.5rem;
+  color: rgba(255, 68, 68, 0.5);
+  margin-top: 1px;
+  font-family: var(--font-mono, monospace);
+}
+
+/* Different colors for multiple pointers (same as before) */
 .collection-cell.has-pointer .pointer-name:nth-child(1) {
   color: #4a9eff;
   background: rgba(74, 158, 255, 0.15);
@@ -556,7 +565,8 @@ body {
 }
 
 /* Hover effect */
-.collection-cell.has-pointer .pointer-name:hover {
+.collection-cell.has-pointer .pointer-name:hover,
+.out-of-bounds-pointer .pointer-name:hover {
   transform: scale(1.1);
   z-index: 10;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -568,6 +578,7 @@ body {
   font-style: italic;
   padding: 8px 0;
 }
+
 
 /* ------------------------------------------------------------------------
    Console

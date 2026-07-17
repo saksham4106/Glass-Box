@@ -1,21 +1,3 @@
 {
-  "partition": {
-    "pointers": {
-      "i": "arr",
-      "j": "arr",
-      "left": "arr",
-      "right": "arr"
-    }
-  },
-  "quickSort": {
-    "pointers": {
-      "left": "arr",
-      "right": "arr"
-    }
-  },
-  "sort": {
-    "pointers": {
-      "arr": "arr"
-    }
-  }
+
 }

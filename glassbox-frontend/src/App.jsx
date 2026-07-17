@@ -5,8 +5,7 @@ import { useStepNavigation } from './hooks/useStepNavigation';
 import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useActiveFrame } from './hooks/useActiveFrame';
 import { LayoutSlot } from './components/LayoutSlot';
-import Controls from './components/Controls.jsx';
-import Timeline from './components/Timeline.jsx';
+import CodeInputScreen from "./components/CodeInputScreen.jsx";
 
 const INITIAL_LAYOUT = {
   slot_1: 'code',
@@ -17,12 +16,18 @@ const INITIAL_LAYOUT = {
   slot_6: 'console',
 };
 
+
 export default function App() {
+
   const [code, setCode] = useState(
       `class Solution {\n  public static void main(String[] args){\n    int a = 1 + 2;\n  }\n}`
   );
 
-  const { steps } = useTraceData();
+  const [isVisualizing, visualize] = useState(false);
+
+  const [graphOrStack, setGraphOrStack] = useState(false);
+
+  const { steps } = useTraceData({code});
   const { stepIndex, setStepIndex, goPrev, goNext } = useStepNavigation(steps.length);
 
   const {
@@ -35,6 +40,15 @@ export default function App() {
     handleDrop,
     handleDragEnd,
   } = useDragAndDrop(INITIAL_LAYOUT);
+
+  function handleDoubleClick(e, slotId){
+    const componentInSlot = layout[slotId];
+
+    if (componentInSlot === 'stack') {
+      setGraphOrStack((prev) => !prev);
+      console.log(`Toggling CallStack in ${slotId}`);
+    }
+  }
 
 
   const step = steps && steps.length > 0 ? steps[stepIndex] : null;
@@ -69,7 +83,8 @@ export default function App() {
     steps,
     label,
     goPrev,
-    goNext
+    goNext,
+    graphOrStack
   };
 
   const renderSlot = (slotId) => {
@@ -88,11 +103,20 @@ export default function App() {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
+            onDoubleClick={handleDoubleClick}
             onDragEnd={handleDragEnd}
             panelProps={panelProps}
         />
     );
   };
+
+  if(!isVisualizing){
+    return (
+        <div>
+          <CodeInputScreen code={code} setCode={setCode} visualize={visualize}></CodeInputScreen>
+        </div>
+    )
+  }
 
   return (
       <div className="app">
@@ -100,16 +124,6 @@ export default function App() {
           <h1>GlassBox</h1>
           <p className="app-subtitle">Java execution visualizer</p>
         </header>
-
-        {/*<Timeline steps={steps} stepIndex={stepIndex} onJump={setStepIndex} />*/}
-
-        {/*<Controls*/}
-        {/*    stepIndex={stepIndex}*/}
-        {/*    totalSteps={steps.length}*/}
-        {/*    label={label}*/}
-        {/*    onPrev={goPrev}*/}
-        {/*    onNext={goNext}*/}
-        {/*/>*/}
 
         <main className="layout">
           <Group orientation="horizontal" style={{ width: '100%', height: '100%' }}>

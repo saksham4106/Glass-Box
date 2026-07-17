@@ -11,7 +11,8 @@ export default function UnknownValue({ name, variable }) {
         <span className="var-name">{name}</span>
         <span className="var-type">{variable.jvmType ?? 'unknown'}</span>
       </div>
-      <pre className="unknown-raw">{JSON.stringify(variable, null, 2)}</pre>
+      {/*<pre className="unknown-raw">{JSON.stringify(variable, null, 2)}</pre>*/}
+        <pre className="unknown-raw">{variable.instance}</pre>
     </div>
   );
 }

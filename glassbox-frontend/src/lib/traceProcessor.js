@@ -23,6 +23,7 @@ export function buildSteps(events) {
   let frames = []; // ordered oldest -> newest (top of call stack = last)
   let output = [];
 
+
   const steps = [makeStep({ frames, output, event: null, changed: null })];
 
   for (const event of events) {
