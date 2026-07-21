@@ -46,14 +46,15 @@ public class ExecutionService {
         Path codeFile =  codeDir.resolve("Main.java");
         Files.writeString(codeFile, code);
 
-        HostConfig  hostConfig = HostConfig.newHostConfig()
+
+        HostConfig hostConfig = HostConfig.newHostConfig()
                 .withBinds(
-                        new Bind(codeDir.toAbsolutePath().toString(), new Volume("/app/code")),
-                        new Bind(outputDir.toAbsolutePath().toString(), new Volume("/app/output"))
-                )
+                        new Bind(codeDir.toAbsolutePath().toFile().getAbsolutePath(), new Volume("/app/code")),
+                        new Bind(outputDir.toAbsolutePath().toFile().getAbsolutePath(), new Volume("/app/output"))                )
                 .withMemory(512 * 1024 * 1024L)
                 .withNanoCPUs(1_000_000_000L)
                 .withAutoRemove(false);
+
 
         CreateContainerResponse container = dockerClient.createContainerCmd("algo-sandbox")
                 .withHostConfig(hostConfig)
@@ -68,11 +69,14 @@ public class ExecutionService {
             dockerClient.waitContainerCmd(containerId).start().awaitCompletion();
 
             Path outputFile = outputDir.resolve("out.json");
+            Path errFile = outputDir.resolve("err.json");
 
             if(Files.exists(outputFile)) {
                 return Files.readString(outputFile);
+            }else if(Files.exists(errFile)) {
+                throw new Exception(Files.readString(errFile));
             }else{
-                return "ERROR DURING EXECUTION";
+                throw new Exception("Unhandled Error");
             }
         }finally {
             try{

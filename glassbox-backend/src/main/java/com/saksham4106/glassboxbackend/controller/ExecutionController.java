@@ -29,7 +29,7 @@ public class ExecutionController {
             String out = service.executeCode(executionRequest.getCode());
             return ResponseEntity.ok(new ExecutionResponse(out, true, null));
         }catch(Exception e){
-            return ResponseEntity.badRequest().body(new ExecutionResponse(e.getMessage(), false, null));
+            return ResponseEntity.ok(new ExecutionResponse(e.getMessage(), false, null));
         }
 
 

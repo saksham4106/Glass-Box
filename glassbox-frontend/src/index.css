@@ -774,3 +774,239 @@ body {
   white-space: nowrap;
   min-width: 40px;
 }
+
+
+/* ------------------------------------------------------------------------
+   Setup / Input Screen (GlassBox First Screen)
+   ------------------------------------------------------------------------ */
+.setup-container {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-header {
+  padding: 20px 28px 4px;
+}
+
+.setup-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--text);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.setup-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.setup-main {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 20px 28px 28px 28px;
+  flex: 1;
+  align-items: stretch;
+}
+
+.setup-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--panel);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.setup-panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setup-editor-container {
+  flex: 1;
+  min-height: 400px;
+}
+
+.setup-action-bar {
+  padding: 16px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--panel-alt);
+}
+
+.setup-visualize-btn {
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: bold;
+  background-color: var(--accent-teal);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.setup-visualize-btn:hover {
+  opacity: 0.9;
+}
+
+.setup-visualize-btn:active {
+  transform: scale(0.98);
+}
+
+.setup-panel-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.setup-panel-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.setup-panel-description {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.setup-args-container {
+  margin-top: 32px;
+}
+
+.setup-args-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.setup-args-input {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  box-sizing: border-box;
+}
+
+.setup-args-input:focus {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: -1px;
+}
+
+
+.error-banner {
+  background-color: #2d1b1b;       /* Dark, muted red background */
+  border: 1px solid #7a1c1c;      /* Border that fits your dark theme */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  color: #ff8e8e;                 /* Soft, readable light red text */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.error-banner h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #ff4d4d;                 /* Brighter red for the header */
+}
+
+.error-banner pre {
+  margin: 0;
+  padding: 12px;
+  background-color: #1a1010;       /* Even darker, almost black */
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Courier New', monospace; /* Use a coding font if you have one */
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #e0e0e0;                 /* Light grey text for the stack trace */
+  border: 1px solid #4a1a1a;
+  overflow-x: auto;
+}
+
+
+.collection-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.grid-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.grid-row.has-pointer .grid-row-index {
+  /* reuse whatever highlight style you use on has-pointer cells */
+}
+
+.grid-row-index {
+  min-width: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  text-align: right;
+}
+
+.grid-row-cells {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.grid-cell {
+  min-width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2dd4bf;
+  border-radius: 6px;
+  background: #0f2e2a;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.grid-row-group {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.grid-row-label {
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  margin-bottom: 0.25rem;
+}
+.grid-row-cells {
+  display: flex;
+  gap: 0.4rem;
+}

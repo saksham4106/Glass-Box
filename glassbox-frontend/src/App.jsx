@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Group, Panel, Separator } from 'react-resizable-panels';
 import { useTraceData } from './hooks/useTraceData';
 import { useStepNavigation } from './hooks/useStepNavigation';
@@ -6,6 +6,7 @@ import { useDragAndDrop } from './hooks/useDragAndDrop';
 import { useActiveFrame } from './hooks/useActiveFrame';
 import { LayoutSlot } from './components/LayoutSlot';
 import CodeInputScreen from "./components/CodeInputScreen.jsx";
+import {Mosaic} from "react-loading-indicators";
 
 const INITIAL_LAYOUT = {
   slot_1: 'code',
@@ -16,19 +17,36 @@ const INITIAL_LAYOUT = {
   slot_6: 'console',
 };
 
-
 export default function App() {
-
-  const [code, setCode] = useState(
-      `class Solution {\n  public static void main(String[] args){\n    int a = 1 + 2;\n  }\n}`
-  );
-
+  const [code, setCode] = useState(`class Solution {\n\tpublic static void main(String[] args){\n\t\tint a = 1 + 2;\n\t}\n}`);
   const [isVisualizing, visualize] = useState(false);
+  // Store the error in App state so it persists if visualization fails
+  const [error, setError] = useState(null);
 
+  if (!isVisualizing) {
+    return (
+        <div>
+          <CodeInputScreen
+              code={code}
+              setCode={setCode}
+              visualize={visualize}
+              error={error} // Pass the error
+              setError={setError}
+          />
+        </div>
+    );
+  }
+
+  return <Visualizer code={code} setError={setError} visualize={visualize} />;
+}
+
+// 2. Visualizer Component: Encapsulates all hooks and trace layout logic
+function Visualizer({ code, setError, visualize }) {
   const [graphOrStack, setGraphOrStack] = useState(false);
 
-  const { steps } = useTraceData({code});
-  const { stepIndex, setStepIndex, goPrev, goNext } = useStepNavigation(steps.length);
+  // 1. Core navigation and data hooks
+  const { steps, preRunErrors } = useTraceData({ code });
+  const { stepIndex, setStepIndex, goPrev, goNext } = useStepNavigation(steps?.length || 0);
 
   const {
     layout,
@@ -41,36 +59,52 @@ export default function App() {
     handleDragEnd,
   } = useDragAndDrop(INITIAL_LAYOUT);
 
-  function handleDoubleClick(e, slotId){
-    const componentInSlot = layout[slotId];
-
-    if (componentInSlot === 'stack') {
-      setGraphOrStack((prev) => !prev);
-      console.log(`Toggling CallStack in ${slotId}`);
-    }
-  }
-
-
+  // 2. Safely compute parameters for useActiveFrame so it can run unconditionally
   const step = steps && steps.length > 0 ? steps[stepIndex] : null;
-
   const {
     frames = [],
     output = [],
     changed = {},
     label = ''
   } = step || {};
-
   const topFrame = frames.length > 0 ? frames[frames.length - 1] : null;
 
+  // 3. This hook MUST be called here so it runs every single render
   const { activeFrame, selectedFrameId, setSelectedFrameId } = useActiveFrame(frames, topFrame);
 
-  if (!steps || steps.length === 0) {
-    return <div className="app-loading">Loading trace…</div>;
+  useEffect(() => {
+    if (preRunErrors) {
+      setError(preRunErrors);
+      visualize(false);
+    }
+  }, [preRunErrors, setError, visualize]);
+
+  function handleDoubleClick(e, slotId) {
+    const componentInSlot = layout[slotId];
+    if (componentInSlot === 'stack') {
+      setGraphOrStack((prev) => !prev);
+      console.log(`Toggling CallStack in ${slotId}`);
+    }
+  }
+
+  // 4. NOW it is completely safe to return early for the loading state
+  if ((!steps || steps.length === 0) && !preRunErrors) {
+    return (
+        <div className="app-loading">
+          <Mosaic
+              color={[
+                "#20232f", // --panel-alt (subtle dark base)
+                "#4fb8ae", // --accent-teal (brand teal)
+                "#8c7ae6", // --accent-violet (brand violet)
+                "#e8a94a"  // --accent-amber (brand amber/active)
+              ]}
+          />
+        </div>
+    );
   }
 
   const panelProps = {
     code,
-    setCode,
     activeFrame,
     changed,
     frames,
@@ -109,14 +143,6 @@ export default function App() {
         />
     );
   };
-
-  if(!isVisualizing){
-    return (
-        <div>
-          <CodeInputScreen code={code} setCode={setCode} visualize={visualize}></CodeInputScreen>
-        </div>
-    )
-  }
 
   return (
       <div className="app">

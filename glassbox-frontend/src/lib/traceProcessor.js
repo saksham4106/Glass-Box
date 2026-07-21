@@ -75,6 +75,10 @@ function applyEvent({ frames, output }, event) {
       return { frames, output: [...output, event.data], changed: null };
     }
 
+    case 'syserr': {
+      return { frames, output: [...output, event.data], changed: null };
+    }
+
     case 'pop': {
       return { frames: frames.filter((f) => f.id !== event.frame), output, changed: null };
     }

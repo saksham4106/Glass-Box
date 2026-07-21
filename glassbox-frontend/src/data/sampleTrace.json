@@ -3,7 +3,7 @@
     "type" : "push_frame",
     "frame" : "main_0",
     "parent" : null,
-    "line" : 7,
+    "line" : 6,
     "args" : {
       "args" : {
         "elements" : [ ],
@@ -12,70 +12,109 @@
       }
     }
   }, {
-    "type" : "push_frame",
-    "frame" : "<init>_1",
-    "parent" : "main_0",
-    "line" : 1,
-    "args" : { }
-  }, {
     "type" : "local",
-    "line" : 1,
-    "frameId" : "<init>_1",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "<init>_1",
-    "line" : 6,
-    "return" : {
-      "instance" : "<void value>",
-      "jvmType" : "void",
-      "varType" : "OBJECT"
-    }
-  }, {
-    "type" : "local",
-    "line" : 7,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 8,
+    "line" : 12,
     "frameId" : "main_0",
     "varState" : {
-      "s" : {
-        "instance" : "instance of Solution(id=57)",
-        "jvmType" : "Solution",
-        "varType" : "OBJECT"
+      "grid" : {
+        "jvmType" : "int[][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "elements" : [ "1", "2", "3", "4", "5", "6" ],
+          "jvmType" : "int[]",
+          "varType" : "COLLECTION"
+        }, {
+          "elements" : [ "7", "8", "9", "10", "11", "12" ],
+          "jvmType" : "int[]",
+          "varType" : "COLLECTION"
+        }, {
+          "elements" : [ "13", "14", "15", "16", "17", "18" ],
+          "jvmType" : "int[]",
+          "varType" : "COLLECTION"
+        } ]
       }
     }
   }, {
-    "type" : "push_frame",
-    "frame" : "fib_2",
-    "parent" : "main_0",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "5",
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : {
+      "i" : {
+        "data" : "0",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_2",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_2",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
     "varState" : { }
   }, {
-    "type" : "push_frame",
-    "frame" : "fib_3",
-    "parent" : "fib_2",
-    "line" : 3,
-    "args" : {
-      "n" : {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
         "data" : "4",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
@@ -83,482 +122,263 @@
     }
   }, {
     "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_3",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_3",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_4",
-    "parent" : "fib_3",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "3",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_4",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_4",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_5",
-    "parent" : "fib_4",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "2",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_5",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_5",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_6",
-    "parent" : "fib_5",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "1",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_6",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_6",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_5",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_7",
-    "parent" : "fib_5",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "0",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_7",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_7",
-    "line" : 7,
-    "return" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_5",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_5",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_4",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_8",
-    "parent" : "fib_4",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "1",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_8",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_8",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_4",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_4",
-    "line" : 7,
-    "return" : {
-      "data" : "2",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_3",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_9",
-    "parent" : "fib_3",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "2",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_9",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_9",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_10",
-    "parent" : "fib_9",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "1",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_10",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_10",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_9",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_11",
-    "parent" : "fib_9",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "0",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_11",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_11",
-    "line" : 7,
-    "return" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_9",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_9",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_3",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_3",
-    "line" : 7,
-    "return" : {
-      "data" : "3",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_2",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_12",
-    "parent" : "fib_2",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "3",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_12",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_12",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_13",
-    "parent" : "fib_12",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "2",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_13",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_13",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_14",
-    "parent" : "fib_13",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "1",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_14",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_14",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_13",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_15",
-    "parent" : "fib_13",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "0",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_15",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_15",
-    "line" : 7,
-    "return" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_13",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_13",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_12",
-    "varState" : { }
-  }, {
-    "type" : "push_frame",
-    "frame" : "fib_16",
-    "parent" : "fib_12",
-    "line" : 3,
-    "args" : {
-      "n" : {
-        "data" : "1",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 3,
-    "frameId" : "fib_16",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_16",
-    "line" : 7,
-    "return" : {
-      "data" : "1",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_12",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_12",
-    "line" : 7,
-    "return" : {
-      "data" : "2",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 4,
-    "frameId" : "fib_2",
-    "varState" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "fib_2",
-    "line" : 7,
-    "return" : {
-      "data" : "5",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 8,
+    "line" : 13,
     "frameId" : "main_0",
     "varState" : { }
   }, {
-    "type" : "sysout",
-    "data" : "5"
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "5",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
   }, {
     "type" : "local",
-    "line" : 9,
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 12,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : {
+      "i" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "5",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 12,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : {
+      "i" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 14,
+    "frameId" : "main_0",
+    "varState" : {
+      "j" : {
+        "data" : "5",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 13,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 12,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 17,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "pop",
     "frame" : "main_0",
-    "line" : 8,
+    "line" : 16,
     "return" : {
       "instance" : "<void value>",
       "jvmType" : "void",
