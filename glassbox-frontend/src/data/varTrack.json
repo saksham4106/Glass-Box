@@ -1,8 +1,9 @@
 {
   "main": {
     "pointers": {
-      "i": "grid",
-      "j": "grid"
+      "i": {"target": "grid", "axis":  0},
+      "j": {"target": "grid", "axis":  1},
+      "k": {"target": "grid", "axis":  2}
     }
   }
 }

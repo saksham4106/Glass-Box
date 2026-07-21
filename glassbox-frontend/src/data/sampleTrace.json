@@ -13,30 +13,66 @@
     }
   }, {
     "type" : "local",
-    "line" : 12,
+    "line" : 8,
     "frameId" : "main_0",
     "varState" : {
       "grid" : {
-        "jvmType" : "int[][]",
+        "jvmType" : "int[][][]",
         "varType" : "COLLECTION",
         "variableValueList" : [ {
-          "elements" : [ "1", "2", "3", "4", "5", "6" ],
-          "jvmType" : "int[]",
-          "varType" : "COLLECTION"
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
         }, {
-          "elements" : [ "7", "8", "9", "10", "11", "12" ],
-          "jvmType" : "int[]",
-          "varType" : "COLLECTION"
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
         }, {
-          "elements" : [ "13", "14", "15", "16", "17", "18" ],
-          "jvmType" : "int[]",
-          "varType" : "COLLECTION"
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
         } ]
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : {
       "i" : {
@@ -47,7 +83,7 @@
     }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -58,12 +94,60 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 9,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -74,12 +158,60 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 9,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -90,65 +222,65 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 11,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "3",
+      "k" : {
+        "data" : "0",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 11,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "4",
+      "k" : {
+        "data" : "1",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 11,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "5",
+      "k" : {
+        "data" : "2",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 12,
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 8,
+    "frameId" : "main_0",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : {
       "i" : {
@@ -159,7 +291,7 @@
     }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -170,12 +302,222 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -186,12 +528,222 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -202,65 +754,227 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 11,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "3",
+      "k" : {
+        "data" : "0",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "4",
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "5",
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 12,
+    "line" : 8,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : {
       "i" : {
@@ -271,7 +985,7 @@
     }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -282,12 +996,222 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -298,12 +1222,222 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "0",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
       "j" : {
@@ -314,71 +1448,233 @@
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 11,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "3",
+      "k" : {
+        "data" : "0",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "4",
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "1",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
-    "frameId" : "main_0",
-    "varState" : { }
-  }, {
-    "type" : "local",
-    "line" : 14,
+    "line" : 10,
     "frameId" : "main_0",
     "varState" : {
-      "j" : {
-        "data" : "5",
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 11,
+    "frameId" : "main_0",
+    "varState" : {
+      "k" : {
+        "data" : "2",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
       }
     }
   }, {
     "type" : "local",
-    "line" : 13,
+    "line" : 10,
+    "frameId" : "main_0",
+    "varState" : {
+      "grid" : {
+        "jvmType" : "int[][][]",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "0", "0", "0" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "1", "1", "1" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        }, {
+          "jvmType" : "int[][]",
+          "varType" : "COLLECTION",
+          "variableValueList" : [ {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          }, {
+            "elements" : [ "2", "2", "2" ],
+            "jvmType" : "int[]",
+            "varType" : "COLLECTION"
+          } ]
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 9,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 12,
+    "line" : 8,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "local",
-    "line" : 17,
+    "line" : 28,
     "frameId" : "main_0",
     "varState" : { }
   }, {
     "type" : "pop",
     "frame" : "main_0",
-    "line" : 16,
+    "line" : 27,
     "return" : {
       "instance" : "<void value>",
       "jvmType" : "void",

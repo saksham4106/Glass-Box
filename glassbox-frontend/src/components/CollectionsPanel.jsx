@@ -30,16 +30,21 @@ export default function CollectionsPanel({ frame, changed, trackingConfig }) {
           const { Component } = rendererFor(variable.varType);
           const isChanged = changed?.frameId === frame.id && changed.keys.includes(name);
 
+
           const tracking = Object.keys(frame.vars)
               .filter(key => trackedPrimitives.includes(key))
+              .filter(key => pointers[key]["target"] === name)
               .reduce((result, key) => {
-                result[key] = frame.vars[key];
+                result[key] = {
+                  data: frame.vars[key]["data"],
+                  axis: pointers[key]["axis"],
+                }
                 return result;
               }, {});
 
-
           return (
             <div key={name} className={isChanged ? 'block-changed' : ''}>
+
               <Component name={name} variable={variable} track={tracking} />
             </div>
           );

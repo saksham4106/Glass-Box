@@ -399,11 +399,13 @@ body {
    Collections / objects
    ------------------------------------------------------------------------ */
 .collection-block {
-  margin-bottom: 14px;
+  display: flex;
+
+  /*margin-bottom: 14px;*/
 }
 
 .collection-block:last-child {
-  margin-bottom: 0;
+  /*margin-bottom: 0;*/
 }
 
 .collection-header {
@@ -417,22 +419,33 @@ body {
 
 .collection-row {
   display: flex;
-  gap: 3px;
+  /*gap: 3px;*/
   flex-wrap: wrap;
-  padding: 2px 0;
+  /*padding: 2px 0;*/
   align-items: flex-start;
 }
 
+.layout-row{
+  flex-direction: row;
+}
+
+.layout-column{
+  flex-direction: column;
+}
+
+
 .collection-cell {
   display: flex;
-  flex-direction: column;
+  /*flex-direction: column;*/
   align-items: center;
   min-width: 36px;
   position: relative;
-  padding: 2px 2px 4px 2px;
-  border: 1px solid transparent;
+  column-gap: 0.75rem;
+  padding: 2px 2px 4px 4px;
+  border: 1px solid var(--border);
   border-radius: 4px;
   transition: all 0.15s ease;
+
 }
 
 /* Cell with one or more pointers */
@@ -467,6 +480,7 @@ body {
   color: var(--text-muted);
   margin-top: 2px;
   min-height: 14px;
+  padding-right: 4px;
   font-family: var(--font-mono, monospace);
   display: flex;
   flex-direction: column;
@@ -564,6 +578,7 @@ body {
   border-color: rgba(242, 153, 74, 0.2);
 }
 
+
 /* Hover effect */
 .collection-cell.has-pointer .pointer-name:hover,
 .out-of-bounds-pointer .pointer-name:hover {
@@ -577,6 +592,32 @@ body {
   font-size: 0.78rem;
   font-style: italic;
   padding: 8px 0;
+}
+
+/* ------------------------------------------------------------------------
+   Nested Pointers (Level 2 & 3)
+   ------------------------------------------------------------------------ */
+
+/* Level 2: A pointer inside another pointer (Uses --accent-violet: #8c7ae6 / rgb(140, 122, 230)) */
+.collection-cell.has-pointer .collection-cell.has-pointer {
+  border-color: rgba(140, 122, 230, 0.25);
+  background: rgba(140, 122, 230, 0.05);
+}
+
+.collection-cell.has-pointer .collection-cell.has-pointer .cell-value {
+  border-color: var(--accent-violet);
+  background: rgba(140, 122, 230, 0.08);
+}
+
+/* Level 3: Deeply nested pointer (Uses --accent-amber: #e8a94a / rgb(232, 169, 74)) */
+.collection-cell.has-pointer .collection-cell.has-pointer .collection-cell.has-pointer {
+  border-color: rgba(232, 169, 74, 0.25);
+  background: rgba(232, 169, 74, 0.05);
+}
+
+.collection-cell.has-pointer .collection-cell.has-pointer .collection-cell.has-pointer .cell-value {
+  border-color: var(--accent-amber);
+  background: rgba(232, 169, 74, 0.08);
 }
 
 
