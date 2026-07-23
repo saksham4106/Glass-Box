@@ -16,6 +16,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class ExecutionService {
@@ -66,7 +67,7 @@ public class ExecutionService {
 
         try{
             dockerClient.startContainerCmd(containerId).exec();
-            dockerClient.waitContainerCmd(containerId).start().awaitCompletion();
+            dockerClient.waitContainerCmd(containerId).start().awaitCompletion(10, TimeUnit.SECONDS);
 
             Path outputFile = outputDir.resolve("out.json");
             Path errFile = outputDir.resolve("err.json");

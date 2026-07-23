@@ -16,28 +16,28 @@ import sampleTrace from '../data/sampleTrace.json'
  * loadTrace() needs to change when the swap happens.
  */
 export async function loadTrace({code}) {
-  return sampleTrace;
-  // const data = {
-  //   code: code
-  // };
-  //
-  // try {
-  //   const response = await fetch("http://localhost:8080/api/v1/execute", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(data)
-  //   });
-  //
-  //   if (!response.ok) {
-  //     throw new Error("Request failed");
-  //   }
-  //
-  //   const res =  await response.json();
-  //   return JSON.parse(res.output);
-  //
-  // } catch (err) {
-  //   console.error(err);
-  // }
+  // return sampleTrace;
+  const data = {
+    code: code
+  };
+
+  try {
+    const response = await fetch("http://localhost:8080/api/v1/execute", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+
+    const res =  await response.json();
+    return JSON.parse(res.output);
+
+  } catch (err) {
+    console.error(err);
+  }
 }

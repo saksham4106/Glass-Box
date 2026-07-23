@@ -66,6 +66,7 @@ function Visualizer({ code, setError, visualize }) {
     frames = [],
     output = [],
     heap = {},
+    globals = {},
     changed = {},
     label = ''
   } = step || {};
@@ -118,6 +119,7 @@ function Visualizer({ code, setError, visualize }) {
     setStepIndex,
     stepIndex,
     steps,
+    step,
     label,
     goPrev,
     goNext,

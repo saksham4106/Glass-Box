@@ -1,30 +1,18 @@
 import { Handle, Position } from 'reactflow';
 
-// Custom Heap Node component with 4 handles for smooth cycle routing
-export function HeapNode({ data, id }) {
+export function HeapNode({ data }) {
     return (
-        <div className="node-body">
-            {/* Top (Target) */}
-            <Handle type="target" position={Position.Top} id="top" />
-            {/* Left (Target/Source for cycles) */}
-            <Handle type="target" position={Position.Left} id="left-target" />
+        <>
+            {/* Target handles (Incoming) */}
+            <Handle type="target" position={Position.Top} id="top" style={{ background: 'transparent', border: 'none' }} />
+            <Handle type="target" position={Position.Right} id="right-target" style={{ background: 'transparent', border: 'none' }} />
 
-            <div className="node-header">
-                <span>{data.typeName}</span>
-                <span style={{ fontSize: '9px', opacity: 0.4 }}>#{id}</span>
-            </div>
+            {/* Your existing JSX payload renders exactly as before */}
+            {data.label}
 
-            {data.visibleFields?.map(f => (
-                <div key={f.fieldName} className="node-row">
-                    <span className="node-key">{f.fieldName}:</span>
-                    <span className="node-val-primitive">{f.value.data ?? 'null'}</span>
-                </div>
-            ))}
-
-            {/* Bottom (Source) */}
-            <Handle type="source" position={Position.Bottom} id="bottom" />
-            {/* Right (Source for cycles) */}
-            <Handle type="source" position={Position.Right} id="right-source" />
-        </div>
+            {/* Source handles (Outgoing) */}
+            <Handle type="source" position={Position.Bottom} id="bottom" style={{ background: 'transparent', border: 'none' }} />
+            <Handle type="source" position={Position.Right} id="right-source" style={{ background: 'transparent', border: 'none' }} />
+        </>
     );
 }

@@ -1,9 +1,25 @@
 {
   "events" : [ {
     "type" : "push_frame",
-    "frame" : "main_0",
+    "frame" : "<clinit>_0",
     "parent" : null,
-    "line" : 32,
+    "line" : 7,
+    "args" : { },
+    "heap" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "<clinit>_0",
+    "line" : 6,
+    "return" : {
+      "instance" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "OBJECT"
+    }
+  }, {
+    "type" : "push_frame",
+    "frame" : "main_1",
+    "parent" : null,
+    "line" : 19,
     "args" : {
       "args" : {
         "elements" : [ ],
@@ -13,74 +29,255 @@
     },
     "heap" : { }
   }, {
-    "type" : "local",
-    "line" : 5,
-    "frameId" : "main_0",
-    "varState" : {
-      "x" : {
-        "data" : "3",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "global",
-    "val" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    },
-    "next" : {
-      "data" : "null",
-      "jvmType" : "null",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 6,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 7,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "global",
-    "val" : {
-      "data" : "3",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 8,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 32,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 33,
-    "frameId" : "main_0",
-    "varState" : {
-      "head" : {
+    "type" : "push_frame",
+    "frame" : "<init>_2",
+    "parent" : "main_1",
+    "line" : 4,
+    "args" : {
+      "this" : {
         "id" : 58,
-        "jvmType" : "Solution$ListNode",
+        "jvmType" : "DebuggerTest",
         "varType" : "OBJECT"
       }
     },
     "heap" : {
       "58" : {
-        "jvmType" : "Solution$ListNode",
+        "jvmType" : "DebuggerTest",
+        "objectFields" : [ {
+          "fieldName" : "a",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "b",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "log",
+          "value" : {
+            "jvmType" : "java.util.ArrayList",
+            "varType" : "COLLECTION",
+            "variableValueList" : [ ]
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 4,
+    "frameId" : "<init>_2",
+    "varState" : {
+      "this" : {
+        "id" : 58,
+        "jvmType" : "DebuggerTest",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : {
+      "log" : {
+        "jvmType" : "java.util.ArrayList",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 8,
+    "frameId" : "<init>_2",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 9,
+    "frameId" : "<init>_2",
+    "varState" : { },
+    "heap" : {
+      "58" : {
+        "jvmType" : "DebuggerTest",
+        "objectFields" : [ {
+          "fieldName" : "a",
+          "value" : {
+            "data" : "10",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "b",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "log",
+          "value" : {
+            "jvmType" : "java.util.ArrayList",
+            "varType" : "COLLECTION",
+            "variableValueList" : [ ]
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "<init>_2",
+    "line" : 18,
+    "return" : {
+      "instance" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "OBJECT"
+    }
+  }, {
+    "type" : "local",
+    "line" : 19,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 21,
+    "frameId" : "main_1",
+    "varState" : {
+      "test" : {
+        "id" : 58,
+        "jvmType" : "DebuggerTest",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : {
+      "58" : {
+        "jvmType" : "DebuggerTest",
+        "objectFields" : [ {
+          "fieldName" : "a",
+          "value" : {
+            "data" : "10",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "b",
+          "value" : {
+            "data" : "50",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "log",
+          "value" : {
+            "jvmType" : "java.util.ArrayList",
+            "varType" : "COLLECTION",
+            "variableValueList" : [ ]
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 24,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : {
+      "58" : {
+        "jvmType" : "DebuggerTest",
+        "objectFields" : [ {
+          "fieldName" : "a",
+          "value" : {
+            "data" : "10",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "b",
+          "value" : {
+            "data" : "50",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "log",
+          "value" : {
+            "jvmType" : "java.util.ArrayList",
+            "varType" : "COLLECTION",
+            "variableValueList" : [ {
+              "data" : "\"Start\"",
+              "jvmType" : "java.lang.String",
+              "varType" : "PRIMITIVE"
+            } ]
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : {
+      "log" : {
+        "jvmType" : "java.util.ArrayList",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "data" : "\"Start\"",
+          "jvmType" : "java.lang.String",
+          "varType" : "PRIMITIVE"
+        } ]
+      }
+    }
+  }, {
+    "type" : "local",
+    "line" : 27,
+    "frameId" : "main_1",
+    "varState" : {
+      "arr" : {
+        "elements" : [ "10", "20", "30", "40", "50" ],
+        "jvmType" : "int[]",
+        "varType" : "COLLECTION"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 15,
+    "frameId" : "main_1",
+    "varState" : {
+      "val" : {
+        "data" : "10",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "this" : {
+        "id" : 77,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : {
+      "77" : {
+        "jvmType" : "DebuggerTest$Node",
         "objectFields" : [ {
           "fieldName" : "next",
           "value" : {
@@ -91,7 +288,7 @@
         }, {
           "fieldName" : "val",
           "value" : {
-            "data" : "3",
+            "data" : "0",
             "jvmType" : "int",
             "varType" : "PRIMITIVE"
           }
@@ -100,11 +297,200 @@
       }
     }
   }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
     "type" : "local",
-    "line" : 5,
-    "frameId" : "main_0",
+    "line" : 27,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 28,
+    "frameId" : "main_1",
     "varState" : {
-      "x" : {
+      "head" : {
+        "id" : 77,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : {
+      "77" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "10",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 31,
+    "frameId" : "main_1",
+    "varState" : {
+      "curr" : {
+        "id" : 77,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : {
+      "i" : {
+        "data" : "1",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 15,
+    "frameId" : "main_1",
+    "varState" : {
+      "val" : {
+        "data" : "20",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "this" : {
+        "id" : 78,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : {
+      "78" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : {
+      "78" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "20",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      },
+      "77" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "id" : 78,
+            "jvmType" : "DebuggerTest$Node",
+            "varType" : "OBJECT"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "10",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 31,
+    "frameId" : "main_1",
+    "varState" : {
+      "curr" : {
+        "id" : 78,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : {
+      "i" : {
         "data" : "2",
         "jvmType" : "int",
         "varType" : "PRIMITIVE"
@@ -113,496 +499,754 @@
     "heap" : { }
   }, {
     "type" : "global",
-    "val" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    },
-    "next" : {
-      "data" : "null",
-      "jvmType" : "null",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 6,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 7,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "global",
-    "val" : {
-      "data" : "2",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 8,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 33,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 34,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : {
-      "59" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "data" : "null",
-            "jvmType" : "null",
-            "varType" : "PRIMITIVE"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "2",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      },
-      "58" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "id" : 59,
-            "jvmType" : "Solution$ListNode",
-            "varType" : "OBJECT"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "3",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 5,
-    "frameId" : "main_0",
-    "varState" : {
-      "x" : {
-        "data" : "0",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "global",
-    "val" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    },
-    "next" : {
-      "data" : "null",
-      "jvmType" : "null",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 6,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 7,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 8,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 34,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 35,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : {
-      "60" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "data" : "null",
-            "jvmType" : "null",
-            "varType" : "PRIMITIVE"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "0",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      },
-      "59" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "id" : 60,
-            "jvmType" : "Solution$ListNode",
-            "varType" : "OBJECT"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "2",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 5,
-    "frameId" : "main_0",
-    "varState" : {
-      "x" : {
-        "data" : "-4",
-        "jvmType" : "int",
-        "varType" : "PRIMITIVE"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "global",
-    "val" : {
-      "data" : "0",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    },
-    "next" : {
-      "data" : "null",
-      "jvmType" : "null",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 6,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 7,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "global",
-    "val" : {
-      "data" : "-4",
-      "jvmType" : "int",
-      "varType" : "PRIMITIVE"
-    }
-  }, {
-    "type" : "local",
-    "line" : 8,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 35,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 36,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : {
-      "61" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "data" : "null",
-            "jvmType" : "null",
-            "varType" : "PRIMITIVE"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "-4",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      },
-      "60" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "id" : 61,
-            "jvmType" : "Solution$ListNode",
-            "varType" : "OBJECT"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "0",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      }
-    }
-  }, {
-    "type" : "local",
-    "line" : 37,
-    "frameId" : "main_0",
-    "varState" : { },
-    "heap" : {
-      "61" : {
-        "jvmType" : "Solution$ListNode",
-        "objectFields" : [ {
-          "fieldName" : "next",
-          "value" : {
-            "id" : 59,
-            "jvmType" : "Solution$ListNode",
-            "varType" : "OBJECT"
-          }
-        }, {
-          "fieldName" : "val",
-          "value" : {
-            "data" : "-4",
-            "jvmType" : "int",
-            "varType" : "PRIMITIVE"
-          }
-        } ],
-        "varType" : "OBJECT"
-      }
-    }
-  }, {
-    "type" : "push_frame",
-    "frame" : "hasCycle_1",
-    "parent" : "main_0",
-    "line" : 12,
-    "args" : {
-      "head" : {
-        "id" : 58,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 12,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
+    "varState" : { }
   }, {
     "type" : "local",
     "line" : 15,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 16,
-    "frameId" : "hasCycle_1",
+    "frameId" : "main_1",
     "varState" : {
-      "slow" : {
-        "id" : 58,
-        "jvmType" : "Solution$ListNode",
+      "val" : {
+        "data" : "30",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "this" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
         "varType" : "OBJECT"
       }
     },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 17,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "fast" : {
-        "id" : 59,
-        "jvmType" : "Solution$ListNode",
+    "heap" : {
+      "79" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
         "varType" : "OBJECT"
       }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 18,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 19,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "slow" : {
-        "id" : 59,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 20,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "fast" : {
-        "id" : 60,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 21,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 24,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "fast" : {
-        "id" : 61,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 17,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 18,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 19,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "slow" : {
-        "id" : 60,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 20,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "fast" : {
-        "id" : 59,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 21,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 24,
-    "frameId" : "hasCycle_1",
-    "varState" : {
-      "fast" : {
-        "id" : 60,
-        "jvmType" : "Solution$ListNode",
-        "varType" : "OBJECT"
-      }
-    },
-    "heap" : { }
-  }, {
-    "type" : "local",
-    "line" : 25,
-    "frameId" : "hasCycle_1",
-    "varState" : { },
-    "heap" : { }
-  }, {
-    "type" : "pop",
-    "frame" : "hasCycle_1",
-    "line" : 36,
-    "return" : {
-      "data" : "true",
-      "jvmType" : "boolean",
-      "varType" : "PRIMITIVE"
     }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : {
+      "79" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "30",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      },
+      "78" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "id" : 79,
+            "jvmType" : "DebuggerTest$Node",
+            "varType" : "OBJECT"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "20",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 31,
+    "frameId" : "main_1",
+    "varState" : {
+      "curr" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : {
+      "i" : {
+        "data" : "3",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 15,
+    "frameId" : "main_1",
+    "varState" : {
+      "val" : {
+        "data" : "40",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "this" : {
+        "id" : 80,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : {
+      "80" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : {
+      "80" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "40",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      },
+      "79" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "id" : 80,
+            "jvmType" : "DebuggerTest$Node",
+            "varType" : "OBJECT"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "30",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 31,
+    "frameId" : "main_1",
+    "varState" : {
+      "curr" : {
+        "id" : 80,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : {
+      "i" : {
+        "data" : "4",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 15,
+    "frameId" : "main_1",
+    "varState" : {
+      "val" : {
+        "data" : "50",
+        "jvmType" : "int",
+        "varType" : "PRIMITIVE"
+      },
+      "this" : {
+        "id" : 81,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : {
+      "81" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "0",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 32,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 33,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : {
+      "81" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "data" : "null",
+            "jvmType" : "null",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "50",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      },
+      "80" : {
+        "jvmType" : "DebuggerTest$Node",
+        "objectFields" : [ {
+          "fieldName" : "next",
+          "value" : {
+            "id" : 81,
+            "jvmType" : "DebuggerTest$Node",
+            "varType" : "OBJECT"
+          }
+        }, {
+          "fieldName" : "val",
+          "value" : {
+            "data" : "40",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 31,
+    "frameId" : "main_1",
+    "varState" : {
+      "curr" : {
+        "id" : 81,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
   }, {
     "type" : "local",
     "line" : 37,
-    "frameId" : "main_0",
+    "frameId" : "main_1",
     "varState" : { },
     "heap" : { }
   }, {
-    "type" : "sysout",
-    "data" : "true"
+    "type" : "global",
+    "varState" : { }
   }, {
     "type" : "local",
     "line" : 38,
-    "frameId" : "main_0",
+    "frameId" : "main_1",
+    "varState" : {
+      "slow" : {
+        "id" : 77,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 39,
+    "frameId" : "main_1",
+    "varState" : {
+      "fast" : {
+        "id" : 77,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 40,
+    "frameId" : "main_1",
     "varState" : { },
     "heap" : { }
   }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 41,
+    "frameId" : "main_1",
+    "varState" : {
+      "slow" : {
+        "id" : 78,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 39,
+    "frameId" : "main_1",
+    "varState" : {
+      "fast" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 40,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 41,
+    "frameId" : "main_1",
+    "varState" : {
+      "slow" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 39,
+    "frameId" : "main_1",
+    "varState" : {
+      "fast" : {
+        "id" : 81,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 45,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "reverseTraverse_3",
+    "parent" : "main_1",
+    "line" : 50,
+    "args" : {
+      "node" : {
+        "id" : 77,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      },
+      "target" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "local",
+    "line" : 50,
+    "frameId" : "reverseTraverse_3",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 55,
+    "frameId" : "reverseTraverse_3",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "reverseTraverse_4",
+    "parent" : "reverseTraverse_3",
+    "line" : 50,
+    "args" : {
+      "node" : {
+        "id" : 78,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      },
+      "target" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "local",
+    "line" : 50,
+    "frameId" : "reverseTraverse_4",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 55,
+    "frameId" : "reverseTraverse_4",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "push_frame",
+    "frame" : "reverseTraverse_5",
+    "parent" : "reverseTraverse_4",
+    "line" : 50,
+    "args" : {
+      "node" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      },
+      "target" : {
+        "id" : 79,
+        "jvmType" : "DebuggerTest$Node",
+        "varType" : "OBJECT"
+      }
+    },
+    "heap" : { }
+  }, {
+    "type" : "local",
+    "line" : 50,
+    "frameId" : "reverseTraverse_5",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 51,
+    "frameId" : "reverseTraverse_5",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
     "type" : "pop",
-    "frame" : "main_0",
-    "line" : 37,
+    "frame" : "reverseTraverse_5",
+    "line" : 44,
+    "return" : {
+      "instance" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "OBJECT"
+    }
+  }, {
+    "type" : "local",
+    "line" : 58,
+    "frameId" : "reverseTraverse_4",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 59,
+    "frameId" : "reverseTraverse_4",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : {
+      "log" : {
+        "jvmType" : "java.util.ArrayList",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "data" : "\"Start\"",
+          "jvmType" : "java.lang.String",
+          "varType" : "PRIMITIVE"
+        }, {
+          "data" : "\"Backtracked past: 20\"",
+          "jvmType" : "java.lang.String",
+          "varType" : "PRIMITIVE"
+        } ]
+      }
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "reverseTraverse_4",
+    "line" : 44,
+    "return" : {
+      "instance" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "OBJECT"
+    }
+  }, {
+    "type" : "local",
+    "line" : 58,
+    "frameId" : "reverseTraverse_3",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "local",
+    "line" : 59,
+    "frameId" : "reverseTraverse_3",
+    "varState" : { },
+    "heap" : { }
+  }, {
+    "type" : "global",
+    "varState" : {
+      "log" : {
+        "jvmType" : "java.util.ArrayList",
+        "varType" : "COLLECTION",
+        "variableValueList" : [ {
+          "data" : "\"Start\"",
+          "jvmType" : "java.lang.String",
+          "varType" : "PRIMITIVE"
+        }, {
+          "data" : "\"Backtracked past: 20\"",
+          "jvmType" : "java.lang.String",
+          "varType" : "PRIMITIVE"
+        }, {
+          "data" : "\"Backtracked past: 10\"",
+          "jvmType" : "java.lang.String",
+          "varType" : "PRIMITIVE"
+        } ]
+      }
+    }
+  }, {
+    "type" : "pop",
+    "frame" : "reverseTraverse_3",
+    "line" : 44,
+    "return" : {
+      "instance" : "<void value>",
+      "jvmType" : "void",
+      "varType" : "OBJECT"
+    }
+  }, {
+    "type" : "local",
+    "line" : 46,
+    "frameId" : "main_1",
+    "varState" : { },
+    "heap" : {
+      "58" : {
+        "jvmType" : "DebuggerTest",
+        "objectFields" : [ {
+          "fieldName" : "a",
+          "value" : {
+            "data" : "10",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "b",
+          "value" : {
+            "data" : "50",
+            "jvmType" : "int",
+            "varType" : "PRIMITIVE"
+          }
+        }, {
+          "fieldName" : "log",
+          "value" : {
+            "jvmType" : "java.util.ArrayList",
+            "varType" : "COLLECTION",
+            "variableValueList" : [ {
+              "data" : "\"Start\"",
+              "jvmType" : "java.lang.String",
+              "varType" : "PRIMITIVE"
+            }, {
+              "data" : "\"Backtracked past: 20\"",
+              "jvmType" : "java.lang.String",
+              "varType" : "PRIMITIVE"
+            }, {
+              "data" : "\"Backtracked past: 10\"",
+              "jvmType" : "java.lang.String",
+              "varType" : "PRIMITIVE"
+            } ]
+          }
+        } ],
+        "varType" : "OBJECT"
+      }
+    }
+  }, {
+    "type" : "global",
+    "varState" : { }
+  }, {
+    "type" : "pop",
+    "frame" : "main_1",
+    "line" : 45,
     "return" : {
       "instance" : "<void value>",
       "jvmType" : "void",

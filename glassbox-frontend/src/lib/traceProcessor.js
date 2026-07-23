@@ -22,19 +22,20 @@
 export function buildSteps(events) {
   let frames = []; // ordered oldest -> newest (top of call stack = last)
   let output = [];
-
+  let globals = {};
   let heap = {}
 
 
-  const steps = [makeStep({ frames, output, heap, event: null, changed: null })];
+  const steps = [makeStep({ frames, output, heap, globals, event: null, changed: null })];
 
   for (const event of events) {
-    const result = applyEvent({ frames, output, heap }, event);
+    const result = applyEvent({ frames, output, heap, globals }, event);
     frames = result.frames;
     output = result.output;
     heap = result.heap;
+    globals = result.globals;
 
-    steps.push(makeStep({ frames, output, heap,  event, changed: result.changed }));
+    steps.push(makeStep({ frames, output, heap, globals, event, changed: result.changed }));
   }
 
   return steps;
@@ -48,7 +49,7 @@ export function buildSteps(events) {
  * Adding a new event type later (e.g. an "exception" event) means adding a
  * case here - nothing else in this file needs to know about it.
  */
-function applyEvent({ frames, output, heap }, event) {
+function applyEvent({ frames, output, heap, globals }, event) {
   let nextHeap = event.heap ? {...heap, ...event.heap} : heap;
 
   switch (event.type) {
@@ -63,7 +64,8 @@ function applyEvent({ frames, output, heap }, event) {
       return {
         frames: [...frames, newFrame],
         output,
-        heap: collectGarbage([...frames, newFrame], nextHeap),
+        globals,
+        heap: collectGarbage([...frames, newFrame], globals, nextHeap),
         changed: { frameId: event.frame, keys: Object.keys(vars) },
       };
     }
@@ -75,34 +77,44 @@ function applyEvent({ frames, output, heap }, event) {
           ? { ...frame, currentLine: event.line, vars: { ...frame.vars, ...event.varState } }
           : frame
       );
-      return { frames: nextFrames, output,
-        heap: collectGarbage(nextFrames, nextHeap), changed: { frameId: event.frameId, keys } };
+      return { frames: nextFrames, output, globals,
+        heap: collectGarbage(nextFrames, globals, nextHeap), changed: { frameId: event.frameId, keys } };
+    }
+
+    case 'global': {
+      const nextGlobals = { ...globals, ...event.varState };
+      const keys = Object.keys(event.varState ?? {});
+
+      return {
+        frames, output, globals: nextGlobals,
+        heap: collectGarbage(frames, nextGlobals, nextHeap), changed: { type: 'global', keys }};
+
     }
 
     case 'sysout': {
-      return { frames, output: [...output, event.data], heap, changed: null };
+      return { frames, output: [...output, event.data], globals,  heap, changed: null };
     }
 
     case 'syserr': {
-      return { frames, output: [...output, event.data], heap, changed: null };
+      return { frames, output: [...output, event.data], globals, heap, changed: null };
     }
 
     case 'pop': {
       const nextFrames = frames.filter((f) => f.id !== event.frame);
-      return { frames: nextFrames, output, heap: collectGarbage(nextFrames, nextHeap), changed: null };
+      return { frames: nextFrames, output, globals, heap: collectGarbage(nextFrames, globals, nextHeap), changed: null };
     }
 
     default: {
       // Unknown event types are ignored rather than crashing the app, so a
       // backend change that adds a new event type won't break playback of
       // older traces - it'll just be a no-op until a case is added above.
-      return { frames, output, heap, changed: null };
+      return { frames, output, heap, globals, changed: null };
     }
   }
 }
 
-function makeStep({ frames, output, heap, event, changed }) {
-  return { frames, output, heap, event, changed, label: describeEvent(event) };
+function makeStep({ frames, output, heap, globals, event, changed }) {
+  return { frames, output, heap, globals, event, changed, label: describeEvent(event) };
 }
 
 /** Human-readable label for the current step, used in the controls bar and timeline tooltips. */
@@ -131,20 +143,48 @@ export function frameLabel(frameId) {
   return idx === -1 ? frameId : `${frameId.slice(0, idx)}()`;
 }
 
-function collectGarbage(frames, rawHeap) {
+function collectGarbage(frames, globals, rawHeap) {
   if(!rawHeap || Object.keys(rawHeap).length === 0) return {};
 
   const reachable = new Set();
   const queue = [];
 
-  for(const frame of frames) {
-    for(const variable of Object.values(frame.vars)){
-      if(variable.varType === 'OBJECT' && variable.id){
-        queue.push(String(variable.id));
+  // Helper to safely find objects even if they are inside an array
+  const enqueueIfObject = (variable) => {
+    if (!variable) return;
+
+    if (variable.varType === 'OBJECT' && variable.id) {
+      queue.push(String(variable.id));
+    }
+
+    // If the variable is an array, check its elements
+    if (variable.varType === 'COLLECTION' && Array.isArray(variable.elements)) {
+      for (const element of variable.elements) {
+        enqueueIfObject(element);
+      }
+    }
+  };
+
+  // MARK: Sweep all frames
+  for (const frame of frames) {
+    for (const variable of Object.values(frame.vars)) {
+      enqueueIfObject(variable);
+    }
+  }
+
+  if (globals && typeof globals === 'object') {
+    // Loop over each class (e.g., "Main", "Solution$TreeNode")
+    for (const classVars of Object.values(globals)) {
+      if (classVars && typeof classVars === 'object') {
+        // Loop over the static variables inside that class
+        for (const variable of Object.values(classVars)) {
+          enqueueIfObject(variable);
+        }
       }
     }
   }
 
+  // MARK: Traverse the Heap
   while(queue.length > 0){
     const id = queue.pop();
 
@@ -154,14 +194,13 @@ function collectGarbage(frames, rawHeap) {
       const obj = rawHeap[id];
       if(obj && obj.objectFields){
         for(const field of obj.objectFields){
-          if(field.value.varType === 'OBJECT' && field.value.id){
-            queue.push(String(field.value.id));
-          }
+          enqueueIfObject(field.value);
         }
       }
     }
   }
 
+  // SWEEP
   const cleanedHeap = {};
   for(const id of reachable){
     if(rawHeap[id]){

@@ -1,35 +1,95 @@
 import ReactFlow, { useEdgesState, useNodesState, MarkerType } from "reactflow";
-import {useEffect, useMemo} from "react";
-import dagre from "@dagrejs/dagre";
+import { useEffect, useMemo, useRef, useCallback } from "react";
+import ELK from "elkjs/lib/elk.bundled.js";
 import "./ObjectHeapPanel.css";
-import {HeapNode} from "./HeapNode.jsx";
+import { HeapNode } from "./HeapNode.jsx";
+
+const elk = new ELK();
 
 export function ObjectHeapPanel({ step, frame }) {
     let variables = {};
 
-    Object.entries(frame.vars).map(([name, data]) => {
-        if(data.id){
-           variables[data.id] = name;
+    Object.entries(frame.vars).forEach(([name, data]) => {
+        if (data.id) {
+            variables[data.id] = name;
         }
-    })
+    });
 
+    const [nodes, setNodes, onNodesChange] = useNodesState([]);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
-    const { nodes: layoutNodes = [], edges: layoutEdges = [] } = StateToMemoryGraph(step, variables);
-    const [nodes, setNodes, onNodesChange] = useNodesState(layoutNodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(layoutEdges);
-
+    // 1. Maintain a ref of the current nodes to persist coordinates
+    const nodesRef = useRef([]);
     useEffect(() => {
-        const { nodes: newNodes, edges: newEdges } = StateToMemoryGraph(step, variables);
-        setNodes(newNodes);
-        setEdges(newEdges);
+        nodesRef.current = nodes;
+    }, [nodes]);
+
+    // 2. Track manually dragged nodes so we know which ones to freeze
+    const draggedNodesRef = useRef(new Set());
+
+    // Intercept node changes to catch user dragging
+    const handleNodesChange = useCallback((changes) => {
+        changes.forEach(change => {
+            if (change.type === 'position' && change.dragging) {
+                draggedNodesRef.current.add(change.id);
+            }
+        });
+        onNodesChange(changes);
+    }, [onNodesChange]);
+
+    // 3. Layout Calculation
+    useEffect(() => {
+        let isMounted = true;
+
+        StateToMemoryGraph(step, nodesRef.current, draggedNodesRef.current).then(({ nodes: newNodes, edges: newEdges }) => {
+            if (isMounted) {
+                setNodes(newNodes);
+                setEdges(newEdges);
+            }
+        });
+
+        return () => {
+            isMounted = false;
+        };
     }, [step, setNodes, setEdges]);
+
+    // 4. Dynamic Real-Time Edge Routing
+    useEffect(() => {
+        setEdges((currentEdges) => {
+            let hasChanges = false;
+
+            const updatedEdges = currentEdges.map(edge => {
+                const sourceNode = nodes.find(n => n.id === edge.source);
+                const targetNode = nodes.find(n => n.id === edge.target);
+
+                if (!sourceNode || !targetNode) return edge;
+
+                // If target is above or within 20px of the source's horizontal level, loop it right!
+                const isUpwardOrSideways = targetNode.position.y < (sourceNode.position.y + 20);
+
+                const optimalSource = isUpwardOrSideways ? 'right-source' : 'bottom';
+                const optimalTarget = isUpwardOrSideways ? 'right-target' : 'top';
+
+                if (edge.sourceHandle !== optimalSource || edge.targetHandle !== optimalTarget) {
+                    hasChanges = true;
+                    return {
+                        ...edge,
+                        sourceHandle: optimalSource,
+                        targetHandle: optimalTarget
+                    };
+                }
+                return edge;
+            });
+
+            // Only trigger a React re-render if a handle actually needed to swap
+            return hasChanges ? updatedEdges : currentEdges;
+        });
+    }, [nodes, setEdges]); // Runs every time `nodes` changes (including manual drags!)
 
     const styledNodes = useMemo(() => {
         return nodes.map((node) => {
             const isSelected = !!variables[node.id];
-            const varName = variables[node.id]; // e.g. "root" or "head"
-
-            // Extract original objData stored in node.data or rebuild label dynamically
+            const varName = variables[node.id];
             const typeName = node.data.jvmType ? node.data.jvmType.split('$').pop() : '';
 
             return {
@@ -37,7 +97,6 @@ export function ObjectHeapPanel({ step, frame }) {
                 data: {
                     ...node.data,
                     heading: isSelected ? `${varName} ${node.data.heading || ''}` : node.data.heading,
-                    // Re-render data.label to reflect isSelected state
                     label: (
                         <div className="node-body">
                             <div className="node-header">
@@ -77,8 +136,8 @@ export function ObjectHeapPanel({ step, frame }) {
             <ReactFlow
                 nodes={styledNodes}
                 edges={edges}
-                // nodeTypes={nodeTypes}
-                onNodesChange={onNodesChange}
+                nodeTypes={nodeTypes}
+                onNodesChange={handleNodesChange} // <-- Replaced with wrapped handler
                 onEdgesChange={onEdgesChange}
                 proOptions={{ hideAttribution: true }}
                 fitView
@@ -87,21 +146,20 @@ export function ObjectHeapPanel({ step, frame }) {
     );
 }
 
-function StateToMemoryGraph(currentStep) {
+// Added draggedNodes parameter
+async function StateToMemoryGraph(currentStep, previousNodes = [], draggedNodes = new Set()) {
     if (!currentStep) return { nodes: [], edges: [] };
 
     const { heap } = currentStep;
     const nodes = [];
     const edges = [];
 
-    // Skip rendering stack frames as nodes entirely!
-
-    // Render Heap Objects
     Object.entries(heap).forEach(([id, objData]) => {
         const visibleFields = objData.objectFields.filter(f => !f.value.id);
 
         nodes.push({
             id: String(id),
+            type: 'heapNode',
             className: 'glass-node glass-node-heap',
             style: {
                 background: 'rgba(22, 34, 43, 0.95)',
@@ -113,98 +171,73 @@ function StateToMemoryGraph(currentStep) {
             },
             data: {
                 heading: "",
-                jvmType: objData.jvmType, // Store raw jvmType
-                visibleFields: visibleFields, // Store raw visibleFields
-                label: null // Will be generated/hydrated by styledNodes
+                jvmType: objData.jvmType,
+                visibleFields: visibleFields,
+                label: null
             }
         });
 
-
         objData.objectFields.forEach(field => {
             if (field.value.varType === 'OBJECT' && field.value.id) {
-                const isBackEdge = Number(field.value.id) < Number(id);
-
                 edges.push({
                     id: `edge-${id}-${field.fieldName}-${field.value.id}`,
                     source: String(id),
                     target: String(field.value.id),
                     label: field.fieldName,
-                    type: isBackEdge ? 'default' : 'smoothstep', // Bezier creates a nice sweeping arc for loops
+                    type: 'smoothstep',
                     style: { stroke: '#f0a030', strokeWidth: 1.5 },
                     markerEnd: {
                         type: MarkerType.ArrowClosed,
                         color: '#f0a030',
                     }
+                    // Handle assignments completely removed from here!
                 });
-                // edges.push({
-                    // id: `edge-${id}-${field.fieldName}-${field.value.id}`,
-                    // source: String(id),            // Node 61 (-4)
-                    // target: String(field.value.id), // Node 59 (2)
-                    // sourceHandle: isBackwardsEdge ? 'right-source' : 'bottom',
-                    // targetHandle: isBackwardsEdge ? 'left-target' : 'top',
-                    // label: field.fieldName,
-                    // type: 'smoothstep',
-                    // style: { stroke: '#f0a030', strokeWidth: 1.5 },
-                    // markerEnd: {
-                    //     type: MarkerType.ArrowClosed,
-                    //     width: 12,
-                    //     height: 12,
-                    //     color: '#f0a030',
-                    // }
-                // });
             }
         });
     });
 
-    return getLayoutElements(nodes, edges, 'TB');
+    return await getLayoutElements(nodes, edges, previousNodes, draggedNodes, 'DOWN');
 }
 
-function getLayoutElements(nodes, edges, direction = 'TB') {
-    const dagreGraph = new dagre.graphlib.Graph();
-    dagreGraph.setDefaultEdgeLabel(() => ({}));
-    dagreGraph.setGraph({
-        rankdir: direction,
-        nodesep: 25,
-        ranksep: 40,
-        marginx: 20,
-        marginy: 20
-    });
+// Added draggedNodes parameter
+async function getLayoutElements(nodes, edges, previousNodes = [], draggedNodes = new Set(), direction = 'DOWN') {
+    const graph = {
+        id: 'root',
+        layoutOptions: {
+            'elk.algorithm': 'layered',
+            'elk.direction': direction,
+            'elk.spacing.nodeNode': '50',
+            'elk.layered.spacing.nodeNodeBetweenLayers': '60',
+            'elk.layered.cycleBreaking.strategy': 'DEPTH_FIRST'
+        },
+        children: nodes.map(n => ({ id: n.id, width: 130, height: 55 })),
+        edges: edges.map(e => ({ id: e.id, sources: [e.source], targets: [e.target] }))
+    };
 
-    nodes.forEach((node) => {
-        dagreGraph.setNode(node.id, { width: 130, height: 55 });
-    });
+    const layoutedGraph = await elk.layout(graph);
 
-    // CRITICAL FIX: Only give Dagre acyclic edges!
-    // Filter out backward edges (where target ID is smaller or already above)
-    const layoutEdges = edges.filter(edge => {
-        const sourceNum = Number(edge.source);
-        const targetNum = Number(edge.target);
+    const layoutedNodes = nodes.map(node => {
+        const prevNode = previousNodes.find(n => n.id === node.id);
+        const isDragged = draggedNodes.has(node.id); // Check if manually dragged
 
-        // If it's a numeric ID comparison, ignore backward links for Dagre ranking
-        if (!isNaN(sourceNum) && !isNaN(targetNum)) {
-            return sourceNum < targetNum;
+        const elkNode = layoutedGraph.children.find(n => n.id === node.id);
+
+        // ONLY freeze the position if the user explicitly dragged this specific node
+        if (prevNode && prevNode.position && isDragged) {
+            return {
+                ...node,
+                position: prevNode.position
+            };
         }
-        return true;
-    });
 
-    // Feed ONLY non-cycle edges to Dagre so it doesn't invert node positions
-    layoutEdges.forEach((edge) => {
-        dagreGraph.setEdge(edge.source, edge.target);
-    });
-
-    dagre.layout(dagreGraph);
-
-    const layoutNodes = nodes.map((node) => {
-        const nodeWithPosition = dagreGraph.node(node.id);
+        // Otherwise, use ELK's newly calculated position to keep trees balanced
         return {
             ...node,
-            position: {
-                x: nodeWithPosition.x - 65,
-                y: nodeWithPosition.y - 27.5,
-            },
+            position: { x: elkNode.x, y: elkNode.y }
         };
     });
 
-    // Return the nodes along with ALL original edges (so ReactFlow draws the cycle!)
-    return { nodes: layoutNodes, edges };
+    // Edges are passed back exactly as-is.
+    // The new useEffect will handle mapping sourceHandle and targetHandle dynamically!
+    return { nodes: layoutedNodes, edges };
 }

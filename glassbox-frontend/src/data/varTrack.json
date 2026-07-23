@@ -1,7 +1,7 @@
 {
-  "backtrack": {
+  "main": {
     "pointers": {
-      "i": {"target": "nums", "axis":  0}
+      "i": {"target": "arr", "axis":  0}
     }
   }
 }

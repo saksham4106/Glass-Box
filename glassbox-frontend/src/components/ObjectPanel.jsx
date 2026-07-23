@@ -19,7 +19,10 @@ export default function ObjectPanel({ frame, steps, stepIndex, changed, tracking
   const pointers = config?.pointers || {};
   const trackedPrimitives = Object.keys(pointers);
 
-  const items = Object.entries(frame.vars).filter(([, v]) => rendererFor(v.varType).area === 'pictorial');
+  const globalVars = steps[stepIndex].globals;
+
+  const items = Object.entries({...globalVars, ...frame.vars}).filter(([, v]) => rendererFor(v.varType).area === 'pictorial');
+
 
   if(!isGraph){
     return (

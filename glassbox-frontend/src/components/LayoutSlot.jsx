@@ -17,7 +17,7 @@ const PANEL_CONFIG = {
     globals: {
         title: 'Globals',
         areaClass: 'area-globals scrollable-y',
-        render: () => <GlobalsPanel />,
+        render: ({ step, changed }) => <GlobalsPanel step={step} changed={changed} />,
     },
     locals: {
         title: 'Locals',
