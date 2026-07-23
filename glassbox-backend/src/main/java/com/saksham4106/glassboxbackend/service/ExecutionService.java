@@ -25,9 +25,12 @@ public class ExecutionService {
     private final Path sandboxDir = Path.of(System.getProperty("user.dir"), "sandboxes");
 
     public ExecutionService(){
-        DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder().build();
+        DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
+                .withDockerHost("unix:///var/run/docker.sock")
+                .build();
         DockerHttpClient httpClient = new ApacheDockerHttpClient.Builder()
                 .dockerHost(config.getDockerHost())
+
                 .sslConfig(config.getSSLConfig())
                 .maxConnections(100)
                 .build();

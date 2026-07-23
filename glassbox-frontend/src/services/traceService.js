@@ -35,6 +35,8 @@ export async function loadTrace({code}) {
     }
 
     const res =  await response.json();
+    console.log(res);
+
     return JSON.parse(res.output);
 
   } catch (err) {
