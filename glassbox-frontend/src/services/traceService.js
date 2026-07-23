@@ -22,7 +22,7 @@ export async function loadTrace({code}) {
   };
 
   try {
-    const response = await fetch("http://localhost:8080/api/v1/execute", {
+    const response = await fetch("http://65.52.164.179:8080/api/v1/execute", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
