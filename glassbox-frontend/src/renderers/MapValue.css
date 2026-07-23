@@ -1,0 +1,60 @@
+.map-value-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    background: var(--panel);
+    color: var(--text);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    min-width: 220px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.map-value-table thead th {
+    background: var(--panel-alt);
+    color: var(--text-muted);
+    text-align: left;
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 2px solid var(--border);
+}
+
+.map-value-table thead th:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.map-value-table tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.map-value-table tbody td:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.map-value-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.map-value-table tbody tr:nth-child(even) {
+    background: var(--panel-alt);
+}
+
+.map-value-table tbody tr:hover {
+    background: rgba(232, 169, 74, 0.06);
+}
+
+.map-value-key {
+    color: var(--accent-teal);
+    font-weight: 600;
+}
+
+.map-value-val {
+    color: var(--text);
+}

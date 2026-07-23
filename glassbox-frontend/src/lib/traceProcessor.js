@@ -23,14 +23,18 @@ export function buildSteps(events) {
   let frames = []; // ordered oldest -> newest (top of call stack = last)
   let output = [];
 
+  let heap = {}
 
-  const steps = [makeStep({ frames, output, event: null, changed: null })];
+
+  const steps = [makeStep({ frames, output, heap, event: null, changed: null })];
 
   for (const event of events) {
-    const result = applyEvent({ frames, output }, event);
+    const result = applyEvent({ frames, output, heap }, event);
     frames = result.frames;
     output = result.output;
-    steps.push(makeStep({ frames, output, event, changed: result.changed }));
+    heap = result.heap;
+
+    steps.push(makeStep({ frames, output, heap,  event, changed: result.changed }));
   }
 
   return steps;
@@ -44,7 +48,9 @@ export function buildSteps(events) {
  * Adding a new event type later (e.g. an "exception" event) means adding a
  * case here - nothing else in this file needs to know about it.
  */
-function applyEvent({ frames, output }, event) {
+function applyEvent({ frames, output, heap }, event) {
+  let nextHeap = event.heap ? {...heap, ...event.heap} : heap;
+
   switch (event.type) {
     case 'push_frame': {
       const vars = event.args ?? {};
@@ -57,6 +63,7 @@ function applyEvent({ frames, output }, event) {
       return {
         frames: [...frames, newFrame],
         output,
+        heap: collectGarbage([...frames, newFrame], nextHeap),
         changed: { frameId: event.frame, keys: Object.keys(vars) },
       };
     }
@@ -68,32 +75,34 @@ function applyEvent({ frames, output }, event) {
           ? { ...frame, currentLine: event.line, vars: { ...frame.vars, ...event.varState } }
           : frame
       );
-      return { frames: nextFrames, output, changed: { frameId: event.frameId, keys } };
+      return { frames: nextFrames, output,
+        heap: collectGarbage(nextFrames, nextHeap), changed: { frameId: event.frameId, keys } };
     }
 
     case 'sysout': {
-      return { frames, output: [...output, event.data], changed: null };
+      return { frames, output: [...output, event.data], heap, changed: null };
     }
 
     case 'syserr': {
-      return { frames, output: [...output, event.data], changed: null };
+      return { frames, output: [...output, event.data], heap, changed: null };
     }
 
     case 'pop': {
-      return { frames: frames.filter((f) => f.id !== event.frame), output, changed: null };
+      const nextFrames = frames.filter((f) => f.id !== event.frame);
+      return { frames: nextFrames, output, heap: collectGarbage(nextFrames, nextHeap), changed: null };
     }
 
     default: {
       // Unknown event types are ignored rather than crashing the app, so a
       // backend change that adds a new event type won't break playback of
       // older traces - it'll just be a no-op until a case is added above.
-      return { frames, output, changed: null };
+      return { frames, output, heap, changed: null };
     }
   }
 }
 
-function makeStep({ frames, output, event, changed }) {
-  return { frames, output, event, changed, label: describeEvent(event) };
+function makeStep({ frames, output, heap, event, changed }) {
+  return { frames, output, heap, event, changed, label: describeEvent(event) };
 }
 
 /** Human-readable label for the current step, used in the controls bar and timeline tooltips. */
@@ -120,4 +129,45 @@ export function describeEvent(event) {
 export function frameLabel(frameId) {
   const idx = frameId.lastIndexOf('_');
   return idx === -1 ? frameId : `${frameId.slice(0, idx)}()`;
+}
+
+function collectGarbage(frames, rawHeap) {
+  if(!rawHeap || Object.keys(rawHeap).length === 0) return {};
+
+  const reachable = new Set();
+  const queue = [];
+
+  for(const frame of frames) {
+    for(const variable of Object.values(frame.vars)){
+      if(variable.varType === 'OBJECT' && variable.id){
+        queue.push(String(variable.id));
+      }
+    }
+  }
+
+  while(queue.length > 0){
+    const id = queue.pop();
+
+    if(!reachable.has(id)){
+      reachable.add(id);
+
+      const obj = rawHeap[id];
+      if(obj && obj.objectFields){
+        for(const field of obj.objectFields){
+          if(field.value.varType === 'OBJECT' && field.value.id){
+            queue.push(String(field.value.id));
+          }
+        }
+      }
+    }
+  }
+
+  const cleanedHeap = {};
+  for(const id of reachable){
+    if(rawHeap[id]){
+      cleanedHeap[id] = rawHeap[id];
+    }
+  }
+
+  return cleanedHeap;
 }

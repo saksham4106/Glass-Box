@@ -35,33 +35,95 @@ function buildPointerMap(track, length, level) {
     return { pointers, outOfBoundsLeft, outOfBoundsRight };
 }
 
+function isNbyN(obj) {
+    if (!obj || obj.varType !== 'COLLECTION') return false;
+
+    const rows = obj.variableValueList;
+    if (!Array.isArray(rows) || rows.length === 0) return false;
+
+    const numRows = rows.length; // N
+
+    // Check that every row is a valid 1D array with exactly N items
+    return rows.every(row => {
+        if (!row || row.varType !== 'COLLECTION') return false;
+
+        // Direct primitive elements (e.g., "elements": ["1", "2", "3"])
+        if (Array.isArray(row.elements)) {
+            return row.elements.length === numRows;
+        }
+
+        // Collection of primitives (e.g., "variableValueList": [{...}, {...}, {...}])
+        if (Array.isArray(row.variableValueList)) {
+            const isAllPrimitive = row.variableValueList.every(item => item.varType === 'PRIMITIVE');
+            return isAllPrimitive && row.variableValueList.length === numRows;
+        }
+
+        return false;
+    });
+}
+
+function is2DArray(obj) {
+    if (!obj || obj.varType !== 'COLLECTION') return false;
+
+    const list = obj.variableValueList;
+
+    // A 2D collection MUST have a non-empty list of sub-collections
+    if (!Array.isArray(list) || list.length === 0) return false;
+
+    // Check if EVERY item inside is a valid 1D collection
+    return list.every(item => is1DArray(item));
+}
+
+function is1DArray(obj) {
+    if (!obj || obj.varType !== 'COLLECTION') return false;
+
+    // Case A: Standard array format (has direct 'elements')
+    if (Array.isArray(obj.elements)) {
+        return true;
+    }
+
+    // Case B: Collection format (has 'variableValueList')
+    if (Array.isArray(obj.variableValueList)) {
+        // It's 1D if every item in variableValueList is a PRIMITIVE
+        return obj.variableValueList.every(item => item.varType === 'PRIMITIVE');
+    }
+
+    return false;
+}
+
 export default function CollectionValue({ name, variable, track, level = 0 }) {
     const { jvmType } = variable;
     const cells = getCells(variable);
     const length = cells.length;
 
     const { pointers, outOfBoundsLeft, outOfBoundsRight } = buildPointerMap(track, length, level);
+    const vertical = level === 0 && isNbyN(variable);
 
     return (
-        <div className="collection-block">
-            {/*<div className="collection-header">*/}
-            {/*    <span className="var-name">{name}</span>*/}
-            {/*    <span className="var-type">{jvmType}</span>*/}
-            {/*</div>*/}
+        <div className={`collection-block ${level === 0 ? 'layout-column' : ''}`}>
+            {level === 0 ? (
+                <div className="collection-header layout-row">
+                    <span className="var-name">{name}</span>
+                    <span className="var-type">{jvmType}</span>
+                </div>
+
+            ): (
+                <div className="collection-empty"></div>
+
+            )}
 
             {length === 0 ? (
-                <div className="collection-empty">empty</div>
+                <div> </div>
             ) : (
                 <SequentialBody cells={cells} pointers={pointers}
                                 outOfBoundsLeft={outOfBoundsLeft} outOfBoundsRight={outOfBoundsRight}
-                                length={length} level={level} track={track}/>
+                                length={length} level={level} track={track} vertical={vertical} />
             )}
         </div>
     );
 }
 
-function SequentialBody({ cells, pointers, outOfBoundsLeft, outOfBoundsRight, length, level = 0, track }) {
-    const vertical = level === 0;
+function SequentialBody({ cells, pointers, outOfBoundsLeft, outOfBoundsRight, length, level = 0, track, vertical }) {
     const layout = vertical ? `layout-column` : `layout-row`;
     const oppLayout = vertical ? `layout-row` : `layout-column`;
 
@@ -103,87 +165,6 @@ function SequentialBody({ cells, pointers, outOfBoundsLeft, outOfBoundsRight, le
                     <span className="out-of-bounds-index">{length}</span>
                 </div>
             ))}
-        </div>
-    );
-}
-
-function GridBody({ cells, outOfBoundsLeft, outOfBoundsRight, length, track }) {
-    const {
-        pointers: pointersX,
-        outOfBoundsLeft: outOfBoundsLeftX,
-        outOfBoundsRight: outOfBoundsRightX
-    } = buildPointerMap(track, length, 0);
-
-    const {
-        pointers: pointersY,
-        outOfBoundsLeft: outOfBoundsLeftY,
-        outOfBoundsRight: outOfBoundsRightY
-    } = buildPointerMap(track, length, 1);
-
-    return (
-        <div className="collection-grid">
-            {outOfBoundsLeft.length > 0 && (
-                <div className="grid-out-of-bounds left">
-                    {outOfBoundsLeft.map((p, idx) => (
-                        <span key={idx} className="pointer-name out-of-bounds">{p} (-1)</span>
-                    ))}
-                </div>
-            )}
-
-            {cells.map((rowCell, rowIndex) => {
-                const rowValues = rowCell.isLeaf ? [] : getCells(rowCell.variable);
-                const rowHasPointer = pointersX[rowIndex]?.length > 0;
-
-                return (
-                    <div className="grid-row-group" key={rowIndex}>
-
-                        <div className="row-index">
-                            {rowHasPointer ? (
-                                <div className="pointer-names">
-                                    {pointersX[rowIndex].map((p, idx) => (
-                                        <span key={idx} className="pointer-name">{p}</span>
-                                    ))}
-                                </div>
-                            ) : (
-                                ''
-                            )}
-                        </div>
-
-                        <div className={`grid-row-cells ${rowHasPointer ? 'has-pointer' : ''}`}>
-                            {rowValues.map((colCell, colIndex) => {
-                                const colHasPointer = pointersY[colIndex]?.length > 0;
-
-                                return (
-                                <div key={colIndex}>
-                                    <div className={`grid-cell ${colHasPointer ? 'has-pointer' : ''}`}>
-                                        {colCell.isLeaf ? colCell.value : '…'}
-                                    </div>
-                                    <div className="cell-index">
-                                        {colHasPointer ? (
-                                            <div className="pointer-names">
-                                                {pointersY[colIndex].map((p, idx) => (
-                                                    <span key={idx} className="pointer-name">{p}</span>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            colIndex
-                                        )}
-                                    </div>
-                                </div>
-                            );
-                            })}
-                        </div>
-                    </div>
-                );
-            })}
-
-            {outOfBoundsRight.length > 0 && (
-                <div className="grid-out-of-bounds right">
-                    {outOfBoundsRight.map((p, idx) => (
-                        <span key={idx} className="pointer-name out-of-bounds">{p} ({length})</span>
-                    ))}
-                </div>
-            )}
         </div>
     );
 }

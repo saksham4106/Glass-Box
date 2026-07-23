@@ -400,10 +400,12 @@ body {
    ------------------------------------------------------------------------ */
 .collection-block {
   display: flex;
-
   /*margin-bottom: 14px;*/
 }
 
+.collection-block.layout-column{
+  margin-bottom: 10px;
+}
 .collection-block:last-child {
   /*margin-bottom: 0;*/
 }
@@ -1051,3 +1053,5 @@ body {
   display: flex;
   gap: 0.4rem;
 }
+
+

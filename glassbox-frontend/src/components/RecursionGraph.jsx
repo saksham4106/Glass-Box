@@ -50,12 +50,35 @@ function FramesToTree({steps}) {
     const initialNodes = steps.filter((step) => step?.event?.type === 'push_frame').map(({event}) => (
         {
         id: event.frame,
-        data: {label: frameLabel(event.frame).slice(0, -1).concat(Object.entries(event.args)
-                .filter(([_, v]) => v.varType === 'PRIMITIVE')
-                .slice(0, 3)
-                .map(([name, v]) => `${name}=${v.data}`)
-                .join(',')).concat(")")},
+        data: {
+            label: (() => {
+                // 1. Get base function name, e.g., "main("
+                const baseName = frameLabel(event.frame).slice(0, -1);
 
+                // 2. Filter, format, and slice args
+                const formattedArgs = Object.entries(event.args ?? {})
+                    .map(([name, v]) => {
+                        if (!v) return null;
+
+                        if (v.varType === 'PRIMITIVE') {
+                            // If data is null or undefined, default to empty string
+                            const valStr = (v.data === 'null') ? '' : `${name}=${v.data}`;
+                            return valStr;
+                        }
+
+                        if (v.varType === 'OBJECT' && v.id) {
+                            return `${name}=(#${v.id})`;
+                        }
+
+                        return null;
+                    })
+                    .filter(Boolean) // Remove nulls
+                    .slice(0, 3)     // Take top 3
+                    .join(', ');
+
+                return `${baseName}${formattedArgs})`;
+            })()
+        },
         position: {x: 0, y: 0},
         style: {
             background: '#1e2a2a',
@@ -87,17 +110,18 @@ function FramesToTree({steps}) {
 
 }
 
-export default function Graph({ steps, selectedFrameId, stepIndex }) {
-    const { nodes: layoutNodes = [], edges: layoutEdges = [] } = FramesToTree({ steps });
+
+export default function RecursionGraph({ steps, selectedFrameId, stepIndex }) {
+    const { nodes: layoutNodes = [], edges: layoutEdges = [] } = FramesToTree({steps});
     const [nodes, setNodes, onNodesChange] = useNodesState(layoutNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(layoutEdges);
 
     // Sync state when steps change
     useEffect(() => {
-        const { nodes: newNodes, edges: newEdges } = FramesToTree({ steps });
+        const { nodes: newNodes, edges: newEdges } = FramesToTree({steps});
         setNodes(newNodes);
         setEdges(newEdges);
-    }, [steps, setNodes, setEdges]);
+    }, [steps, stepIndex, setNodes, setEdges]);
 
     const poppedFramesMap = useMemo(() => {
         const popped = new Map(); // key: frameId, value: return value string

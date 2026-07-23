@@ -1,7 +1,7 @@
 import CodePanel from './CodePanel.jsx';
 import GlobalsPanel from './GlobalsPanel.jsx';
 import LocalsTable from './LocalsTable.jsx';
-import CollectionsPanel from './CollectionsPanel.jsx';
+import ObjectPanel from './ObjectPanel.jsx';
 import CallStack from './CallStack.jsx';
 import ConsoleOutput from './ConsoleOutput.jsx';
 
@@ -27,7 +27,8 @@ const PANEL_CONFIG = {
     visualizer: {
         title: 'Object Visualizer',
         areaClass: 'area-main scrollable-y',
-        render: ({ activeFrame, changed }) => <CollectionsPanel frame={activeFrame} changed={changed} />,
+        render: ({ activeFrame, changed, isGraph, steps, stepIndex }) =>
+            <ObjectPanel frame={activeFrame} changed={changed} isGraph={isGraph} stepIndex={stepIndex} steps={steps} />,
     },
     stack: {
         title: 'Call Stack',

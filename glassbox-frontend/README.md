@@ -31,7 +31,7 @@ steps[]  — one full snapshot per point in time:
         ├─ Controls        — Back / Next + step label
         ├─ CallStack       — stacked frame cards (push_frame / pop)
         ├─ LocalsTable     — scalar vars for the active frame, as a table
-        └─ CollectionsPanel — structured vars for the active frame, pictorially
+        └─ ObjectPanel — structured vars for the active frame, pictorially
 ```
 
 The backend only ever sends **diffs**: a `local` event carries just the
@@ -65,7 +65,7 @@ look" is decided in one place: `src/renderers/registry.js`.
 
 `area: 'table'` puts it in the scalar locals table; `'pictorial'` gives
 it its own block in the Objects panel. `LocalsTable.jsx` and
-`CollectionsPanel.jsx` both just iterate a frame's variables and look
+`ObjectPanel.jsx` both just iterate a frame's variables and look
 up the renderer - neither needs to change.
 
 Unregistered types don't crash the app: they fall back to
@@ -87,7 +87,7 @@ src/
   services/traceService.js  the only file that knows where trace data comes from
   lib/traceProcessor.js     events -> steps
   renderers/                variable-type -> component registry + the renderers themselves
-  components/               UI panels (CallStack, LocalsTable, CollectionsPanel, Timeline, Controls, ConsoleOutput)
+  components/               UI panels (CallStack, LocalsTable, ObjectPanel, Timeline, Controls, ConsoleOutput)
   App.jsx                   wires state (stepIndex, selectedFrameId) to the panels
 ```
 

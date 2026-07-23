@@ -1,0 +1,69 @@
+/* ObjectHeapPanel.css */
+.glass-node {
+    font-family: 'Fira Code', monospace, sans-serif;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    text-align: left;
+    width: 130px; /* Shrunk from 190px */
+    backdrop-filter: blur(6px);
+}
+
+.glass-node-stack {
+    background: rgba(30, 37, 48, 0.95);
+    color: #e2e8f0;
+    border: 1px solid #4a5568;
+}
+
+.glass-node-heap {
+    background: rgba(22, 34, 43, 0.95);
+    color: #63b3ed;
+    border: 1px solid #3182ce;
+}
+
+.node-header {
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #90cdf4;
+    font-size: 11px;
+}
+
+.node-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #cbd5e0;
+}
+
+.node-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.node-key {
+    color: #a0aec0;
+}
+
+.node-val-primitive {
+    color: #f6ad55;
+}
+
+/* ReactFlow Edge Label Dark Styling Override */
+.react-flow__edge-textbg {
+    fill: #1a202c !important; /* Dark background for edge pills */
+    rx: 4px;
+    ry: 4px;
+}
+
+.react-flow__edge-text {
+    fill: #a0aec0 !important; /* Muted gray text for edge labels */
+    font-size: 10px !important;
+    font-family: 'Fira Code', monospace !important;
+}

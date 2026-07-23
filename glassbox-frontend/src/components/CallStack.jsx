@@ -1,5 +1,5 @@
 import { frameLabel } from '../lib/traceProcessor.js';
-import Graph from "./Graph.jsx";
+import RecursionGraph from "./RecursionGraph.jsx";
 
 /**
  * Visualizes the current call stack. Newest call renders on top, matching
@@ -13,7 +13,7 @@ export default function CallStack({ frames, selectedFrameId, activeFrameId, onSe
   if(graphOrStack) {
       return (
           <div style={{ height: '100%', width: '100%' }}>
-              <Graph
+              <RecursionGraph
                   steps={steps}
                   stepIndex={stepIndex}
                   selectedFrameId={activeFrameId}
@@ -34,6 +34,7 @@ export default function CallStack({ frames, selectedFrameId, activeFrameId, onSe
             const isSelected = selectedFrameId ? frame.id === selectedFrameId : isActive;
 
             let label = frameLabel(frame.id);
+
             const primitives = Object.entries(frame.vars)
                 .filter(([_, v]) => v.varType === 'PRIMITIVE')
                 .slice(0, 3)

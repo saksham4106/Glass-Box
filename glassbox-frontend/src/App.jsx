@@ -43,6 +43,7 @@ export default function App() {
 // 2. Visualizer Component: Encapsulates all hooks and trace layout logic
 function Visualizer({ code, setError, visualize }) {
   const [graphOrStack, setGraphOrStack] = useState(false);
+  const [isGraph, setIsGraph] = useState(false);
 
   // 1. Core navigation and data hooks
   const { steps, preRunErrors } = useTraceData({ code });
@@ -64,6 +65,7 @@ function Visualizer({ code, setError, visualize }) {
   const {
     frames = [],
     output = [],
+    heap = {},
     changed = {},
     label = ''
   } = step || {};
@@ -83,7 +85,8 @@ function Visualizer({ code, setError, visualize }) {
     const componentInSlot = layout[slotId];
     if (componentInSlot === 'stack') {
       setGraphOrStack((prev) => !prev);
-      console.log(`Toggling CallStack in ${slotId}`);
+    }else if(componentInSlot === 'visualizer') {
+      setIsGraph(prev => !prev);
     }
   }
 
@@ -118,7 +121,8 @@ function Visualizer({ code, setError, visualize }) {
     label,
     goPrev,
     goNext,
-    graphOrStack
+    graphOrStack,
+    isGraph
   };
 
   const renderSlot = (slotId) => {
