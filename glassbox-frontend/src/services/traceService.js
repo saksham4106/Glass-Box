@@ -15,6 +15,9 @@ import sampleTrace from '../data/sampleTrace.json'
  * The async signature is kept identical on purpose so nothing that calls
  * loadTrace() needs to change when the swap happens.
  */
+
+const API_URL = 'http://localhost:8080/api/v1/execute'
+// "http://65.52.164.179:8080/api/v1/execute"
 export async function loadTrace({code}) {
   // return sampleTrace;
   const data = {
@@ -22,7 +25,7 @@ export async function loadTrace({code}) {
   };
 
   try {
-    const response = await fetch("http://65.52.164.179:8080/api/v1/execute", {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
