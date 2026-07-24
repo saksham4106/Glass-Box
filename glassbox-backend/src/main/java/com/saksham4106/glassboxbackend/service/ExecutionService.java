@@ -25,9 +25,14 @@ public class ExecutionService {
     private final Path sandboxDir = Path.of(System.getProperty("user.dir"), "sandboxes");
 
     public ExecutionService(){
+        boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
+
+        String dockerHost = isWindows ? "tcp://localhost:2375" : "unix:///var/run/docker.sock";
         DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
-                .withDockerHost("unix:///var/run/docker.sock")
+                .withDockerHost(dockerHost)
                 .build();
+
+
         DockerHttpClient httpClient = new ZerodepDockerHttpClient.Builder()
                 .dockerHost(config.getDockerHost())
 
@@ -46,6 +51,14 @@ public class ExecutionService {
 
         Files.createDirectories(outputDir);
         Files.createDirectories(codeDir);
+
+        outputDir.toFile().setWritable(true, false);
+        outputDir.toFile().setReadable(true, false);
+        outputDir.toFile().setExecutable(true, false);
+
+        codeDir.toFile().setWritable(true, false);
+        codeDir.toFile().setReadable(true, false);
+        codeDir.toFile().setExecutable(true, false);
 
         Path codeFile =  codeDir.resolve("Main.java");
         Files.writeString(codeFile, code);

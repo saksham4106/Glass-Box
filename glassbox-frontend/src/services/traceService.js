@@ -16,8 +16,6 @@ import sampleTrace from '../data/sampleTrace.json'
  * loadTrace() needs to change when the swap happens.
  */
 
-const API_URL = 'http://localhost:8080/api/v1/execute'
-// "http://65.52.164.179:8080/api/v1/execute"
 export async function loadTrace({code}) {
   // return sampleTrace;
   const data = {
@@ -25,7 +23,7 @@ export async function loadTrace({code}) {
   };
 
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/execute`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
