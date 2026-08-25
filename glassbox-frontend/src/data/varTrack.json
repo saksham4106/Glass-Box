@@ -1,7 +1,17 @@
 {
-  "main": {
+  "merge": {
     "pointers": {
-      "i": {"target": "arr", "axis":  0}
+      "i": {"target": "nums", "axis":  0},
+      "j": {"target": "nums", "axis":  0},
+      "k": {"target": "temp", "axis":  0},
+      "x": {"target": "temp", "axis":  0}
+    }
+  },
+  "mergeSort": {
+    "pointers": {
+      "left": {"target": "nums", "axis":  0},
+      "right": {"target": "nums", "axis":  0},
+      "mid": {"target": "nums", "axis":  0}
     }
   }
 }
